@@ -1,0 +1,39 @@
+.sidebar {
+  display: inline-block;
+  float: right;
+  width: 25%;
+}
+
+.order__list--item {
+  background: #e0e8e0;
+  margin: 5px;
+  padding: 5px;
+
+  & .nr {
+    background: rgba(0, 174, 0, 0.70);
+    color: #FFF;
+    display: inline-block;
+    padding: 7px;
+  }
+
+  & .ordertimestamp {
+    display: inline-block;
+  }
+
+  & .tablenumber {
+    float: right;
+  }
+
+  & .order__list--item--dishes {
+    padding: 10px 0px 10px 15px;
+
+    & .nr {
+      background: rgba(0, 174, 0, 0.47);
+    }
+
+    & .name {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+}

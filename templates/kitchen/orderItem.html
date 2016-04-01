@@ -1,0 +1,10 @@
+<span class="nr">{{ id }}</span>
+<div class="tablenumber">{{ tablenumber }}</div>
+<p class="ordertimestamp">{{ fordertimestamp }}</p>
+<span class="price">{{ price }}</span>
+{{#each orderitems}}
+    <div class="order__list--item--dishes">
+        <span class="nr">{{ dishes_id }}</span>
+        <h2 class="name">{{ name }}</h2>
+    </div>
+{{/each}}

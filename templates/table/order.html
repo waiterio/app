@@ -1,0 +1,14 @@
+{{#each orderItems}}
+<h2>{{ this.name }}</h2>
+<img src="{{ this.image }}" >
+<p>
+    {{ this.description }}
+</p>
+<div>{{ this.count }}</div>
+{{else}}
+<p>
+    Was möchten Sie essen?
+</p>
+{{/each}}
+<textarea id="notes"></textarea>
+<button id="submitOrder">Bestellen</button>

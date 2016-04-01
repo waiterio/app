@@ -1,0 +1,39 @@
+.dishes {
+  display: inline-block;
+  float: left;
+  width: 70%;
+  vertical-align: top;
+}
+
+.dishes--item {
+  width: calc(25% - 12px);
+  display: inline-block;
+  vertical-align: top;
+  height: 285px;
+  margin: 5px;
+  border: 1px solid lightgrey;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .image {
+    display: block;
+    width: 100%;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  .description, .price {
+    margin: 0;
+    padding: 10px;
+  }
+}
