@@ -5,7 +5,7 @@ define([
         'underscore'],
     function($, Backbone, Marionette, _) {
 		return Backbone.Model.extend({
-			url: function() {
+			urlRoot: function() {
 				return 'https://fathomless-crag-87118.herokuapp.com/api' + this.sub;
 			}
 		});
