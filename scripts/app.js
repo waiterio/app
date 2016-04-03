@@ -17,12 +17,14 @@ define([
             main: '#main'
         });
 
-        App.addInitializer(function() {
+        App.addInitializer(function(options) {
 
         });
 
         App.on("start", function(){
             $.getJSON('settings/settings.json', function(data) {
+                window.settings = data;
+
                 $.getJSON('settings/lang/'+ data.locale +".json", function(phrases) {
                     window.polyglot = new Polyglot(
                         {

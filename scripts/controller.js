@@ -59,8 +59,8 @@ define([
                 App.vent.trigger("setTitle", "title.backend.dishes");
                 require([
                     "views/backend/adminView",
-                    "models/dishModel",
-                    "collections/dishesCollection",
+                    "models/dish",
+                    "collections/dishes",
                     "views/backend/dishesItemView",
                     "text!templates/backend/dishesItem.html"
                 ], function(view, model, collection, childView, tpl) {

@@ -3,7 +3,7 @@ define([
     'backbone',
     'marionette',
     'underscore',
-    'collections/baseCollection'],
+    'collections/base'],
     function($, Backbone, Marionette, _, Collection) {
         var CategoriesCollection = Collection.extend({
             sub: '/categories'

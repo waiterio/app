@@ -4,7 +4,7 @@ define([
         'marionette',
         'underscore',
         'handlebars',
-        'collections/ordersCollection',
+        'collections/orders',
         'views/kitchen/orderOverviewItemView'],
     function ($, Backbone, Marionette, _, Handlebars, orderCollection, orderOverviewItemView) {
         var OrderOverviewView = Marionette.CollectionView.extend({
@@ -16,7 +16,7 @@ define([
                     t.fetchOrders();
                 }, 60000);
             },
-            className: "order order__list",
+            className: "order__list",
             collection: new orderCollection(),
             childView: orderOverviewItemView,
             childViewOptions: function(model, index) {

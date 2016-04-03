@@ -3,7 +3,7 @@ define([
         'backbone',
         'marionette',
         'underscore',
-        'models/baseModel'],
+        'models/base'],
     function($, Backbone, Marionette, _, Model) {
         var OrderModel = Model.extend({
             sub: '/orders'

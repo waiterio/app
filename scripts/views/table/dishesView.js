@@ -4,7 +4,7 @@ define([
         'marionette',
         'underscore',
         'handlebars',
-        'collections/dishesCollection',
+        'collections/dishes',
         'views/table/dishesItemView'],
     function ($, Backbone, Marionette, _, Handlebars, dishesCollection, dishesItemView) {
         var DishesView = Marionette.CollectionView.extend({

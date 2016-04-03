@@ -27,7 +27,6 @@ define([
                 var autosave = setTimeout(function() {
                     console.log(t.model.toJSON());
                     t.model.save(t.model.toJSON(), {
-                        dataType: 'html',
                         success: function() {
                             t.saved();
                         },
@@ -47,6 +46,8 @@ define([
                 setTimeout(function() {
                     t.$el.css("background", "inherit");
                 }, 300);
+
+                this.render();
             },
             stopAutosave: function(cid) {
                 if(typeof this.autosaves[cid] !== 'undefined') {

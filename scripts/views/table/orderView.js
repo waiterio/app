@@ -5,8 +5,8 @@ define([
         'underscore',
         'handlebars',
         'views/table/orderItemView',
-        'collections/dishesCollection',
-        'models/orderModel'],
+        'collections/dishes',
+        'models/order'],
     function ($, Backbone, Marionette, _, Handlebars, orderItemView, dishesCollection, orderModel) {
         var OrderView = Marionette.CollectionView.extend({
             initialize: function() {
