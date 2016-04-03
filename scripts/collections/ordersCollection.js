@@ -3,10 +3,13 @@ define([
         'backbone',
         'marionette',
         'underscore',
-        'collections/baseCollection'],
-    function($, Backbone, Marionette, _, Collection) {
+        'collections/baseCollection',
+        'models/orderModel'
+        ],
+    function($, Backbone, Marionette, _, Collection, model) {
         var OrderItemsCollection = Collection.extend({
-            sub: '/orders'
+            sub: '/orders',
+            model: model
         });
 
         return OrderItemsCollection;
