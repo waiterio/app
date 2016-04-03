@@ -13,6 +13,7 @@ define([
                 "name": "[name='name']",
                 "description": "[name='description']",
                 "price": "[name='price']",
+                "image": "[name='image']",
                 "input": "input, textarea"
             },
             events: {
@@ -23,10 +24,11 @@ define([
                 "click @ui.remove": "askRemove"
             },
             updateModel: function () {
+                this.model.unformatPrice(this.ui.price.val());
                 this.model.set({
                     name: this.ui.name.val(),
                     description: this.ui.description.val(),
-                    price: this.reverseCalc(this.ui.price.val())
+                    image: this.ui.image.val()
                 });
             }
         });

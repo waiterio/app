@@ -11,5 +11,8 @@
       "start": "Admin",
       "dishes": "Admin - Speisen"
     }
+  },
+  "delete": {
+    "dish": "Willst du %{name} wirklich löschen?"
   }
 }

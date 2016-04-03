@@ -15,6 +15,8 @@ define([
                         this.className = "dishes";
                         break;
                 }
+
+                this.$el.append("<div class='add'>+</div>");
             },
             ui: {
                 "add": ".add"
@@ -49,9 +51,6 @@ define([
             addItem: function() {
                 this.collection.add(new this.model());
                 console.log(this.collection);
-            },
-            onCollectionFetched: function() {
-                this.$el.append("<div class='add'>+</div>");
             },
             tagName: "form"
         });

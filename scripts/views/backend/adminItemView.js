@@ -10,7 +10,10 @@ define([
                 this.template = Handlebars.compile(options.tpl);
             },
             askRemove: function() {
-                this.destroy();
+                var r = confirm(polyglot.t("delete.dish", {name: this.model.get("name")}));
+                if (r == true) {
+                    this.destroy();
+                }
             },
             inputChanged: function() {
                 var cid = this.model.get("cid");
@@ -22,6 +25,7 @@ define([
             autosave: function(cid) {
                 var t = this;
                 var autosave = setTimeout(function() {
+                    console.log(t.model.toJSON());
                     t.model.save(t.model.toJSON(), {
                         dataType: 'html',
                         success: function() {
@@ -50,30 +54,8 @@ define([
                     delete this.autosaves.cid;
                 }
             },
-            reverseCalc: function(price) {
-                return parseInt(price.replace(",",""));
-            },
-            calc: function(amount) {
-				if(amount < 100) {
-                    if(amount <= 9) {
-                        if (amount == 0) {
-                            return "0,00";
-                        } else {
-                            return "0,0" + amount;
-                        }
-                    } else {
-                        return "0," + amount;
-                    }
-				}
-				var str = amount.toString();
-				str = [str.slice(0, str.length - 2), ",", str.slice(str.length - 2, str.length)].join('');
-				return str;
-			},
             onDestroy: function() {
                 this.model.destroy();
-            },
-            templateHelpers: function() {
-                return {price: this.calc(this.model.get("price"))};
             }
         });
 

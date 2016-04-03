@@ -14,21 +14,10 @@ define([
             events: {
                 "dragstart": "setDragData"
             },
-            calc: function(amount) {
-				if(amount < 100) {
-					return "0,"+ amount;
-				}
-				var str = amount.toString();
-				str = [str.slice(0, str.length - 2), ",", str.slice(str.length - 2, str.length)].join('');
-				return str;
-			},
             setDragData: function(evt) {
                 evt.originalEvent.dataTransfer.setData('model',JSON.stringify(this.model));
             },
-            template: Handlebars.compile(tpl),
-            templateHelpers: function() {
-                return {price: this.calc(this.model.get("price"))};
-            }
+            template: Handlebars.compile(tpl)
         });
 
         return DishesItemView;
