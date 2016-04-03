@@ -6,7 +6,7 @@ define([
     function($, Backbone, Marionette, _) {
 		return Backbone.Model.extend({
 			url: function() {
-				return 'http://snapsnapturtle-waiter.herokuapp.com/api' + this.sub;
+				return 'https://fathomless-crag-87118.herokuapp.com/api' + this.sub;
 			}
 		});
     });
