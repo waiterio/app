@@ -3,29 +3,10 @@ define([
         'underscore',
         'backbone',
         'marionette',
-        'handlebars'
+        'handlebars',
+        'polyglot'
     ],
-    function ($, _, Backbone, Marionette, Handlebars) {
-        Handlebars.registerHelper('times', function(times, opts) {
-            var out = "";
-            var i;
-            var data = {};
-
-            if ( times ) {
-                for ( i = 0; i < times; i += 1 ) {
-                    data.index = i;
-                    out += opts.fn(this, {
-                        data: data
-                    });
-                }
-            } else {
-
-                out = opts.inverse(this);
-            }
-
-            return out;
-        });
-
+    function ($, _, Backbone, Marionette, Handlebars, Polyglot) {
         Backbone.Marionette.TemplateCache.prototype.compileTemplate = function(rawTemplate) {
             return Handlebars.compile(rawTemplate);
         };
@@ -37,14 +18,27 @@ define([
         });
 
         App.addInitializer(function() {
+
         });
 
         App.on("start", function(){
-            Backbone.history.start({ root: "/"});
+            $.getJSON('settings/settings.json', function(data) {
+                $.getJSON('settings/lang/'+ data.locale +".json", function(phrases) {
+                    window.polyglot = new Polyglot(
+                        {
+                            phrases: phrases,
+                            locale: data.locale
+                        }
+                    );
+
+                    Backbone.history.start({ root: "/"});
+                });
+            });
+
         });
 
         App.vent.on("setTitle", function(title) {
-            $("#pageTitle").html(title);
+            $("#pageTitle").html(polyglot.t(title));
         });
 
         return App;

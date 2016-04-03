@@ -1,0 +1,15 @@
+{
+  "title": {
+    "start": "Who are you?",
+    "table": {
+      "order": "Table Order"
+    },
+    "kitchen": {
+      "order": "Kitchen Order"
+    },
+    "backend": {
+      "start": "Admin",
+      "dishes": "Admin - Dishes"
+    }
+  }
+}

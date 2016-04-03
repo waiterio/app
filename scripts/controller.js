@@ -8,7 +8,7 @@ define([
     function($, _, Backbone, Marionette, App) {
         return {
             order: function () {
-                App.vent.trigger("setTitle","Table Order View");
+                App.vent.trigger("setTitle","title.table.order");
                 require(["views/table/orderLayout"],
                 function(orderLayout) {
 
@@ -22,7 +22,7 @@ define([
                 console.log("Table - Receipt");
             },
             orderList: function() {
-                App.vent.trigger("setTitle","received Orders View");
+                App.vent.trigger("setTitle","title.kitchen.order");
                 require(["views/kitchen/orderOverviewView"],
                     function(OverviewView) {
 
@@ -38,7 +38,7 @@ define([
                 console.log("Kitchen - Menu");
             },
             select: function() {
-                App.vent.trigger("setTitle","Who are you?");
+                App.vent.trigger("setTitle","title.start");
                 require(["views/selectView"],
                     function(SelectView) {
 
@@ -48,7 +48,7 @@ define([
                     });
             },
             backend: function() {
-                App.vent.trigger("setTitle", "Admin");
+                App.vent.trigger("setTitle", "title.backend.start");
                 require(["views/backend/dashboardView"], function(view) {
                     var View = new view();
 
@@ -56,7 +56,7 @@ define([
                 });
             },
             backendDishes: function() {
-                App.vent.trigger("setTitle", "Admin - Dishes");
+                App.vent.trigger("setTitle", "title.backend.dishes");
                 require([
                     "views/backend/adminView",
                     "models/dishModel",
