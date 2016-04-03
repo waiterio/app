@@ -1,21 +1,16 @@
 .dishes {
-  display: inline-block;
-  float: left;
-  width: 70%;
-  vertical-align: top;
+  width: 100%;
 }
 
 .dishes--item {
+  background: #FFFFFF;
   width: calc(25% - 12px);
   display: inline-block;
+  cursor: pointer;
   vertical-align: top;
   height: 285px;
   margin: 5px;
   border: 1px solid lightgrey;
-
-  &:hover {
-    cursor: pointer;
-  }
 
   .image {
     display: block;
@@ -26,7 +21,7 @@
   }
 
   .title {
-    text-align: center;
+    padding: 10px 10px 0 10px;
     font-size: 16px;
     text-transform: uppercase;
     margin-bottom: 0;

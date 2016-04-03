@@ -1,7 +1,54 @@
-.sidebar {
-  display: inline-block;
-  float: right;
+.order {
+  background: #FFFFFF;
+  border-left: 5px #880000 solid;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  transform: translate3d(100%, 0, 0);
+  transition: 0.2s ease transform;
   width: 25%;
+
+  &.out {
+    transform: translate3d(0,0,0);
+  }
+}
+
+#toggle {
+  background: #880000;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 25px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  margin-left: -55px;
+  height: 50px;
+  text-align: center;
+  width: 50px;
+}
+
+#submitOrder {
+  background: #555500;
+  color: #FFFFFF;
+  border: none;
+  height: 30px;
+  margin: 10px;
+  width: calc(100% - 20px);
+}
+
+.order__wrapper {
+  height: calc(100% - 50px);
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.order--item {
+  & img {
+    width: 100%;
+  }
 }
 
 .order__list--item {

@@ -8,7 +8,7 @@ define([
         'views/table/orderView',
         'text!templates/table/orderLayout.html'],
     function ($, Backbone, Marionette, _, Handlebars, dishesView, orderView, tpl) {
-        var orderLayout = Marionette.LayoutView.extend({
+        var OrderLayout = Marionette.LayoutView.extend({
             template: Handlebars.compile(tpl),
             tagName: "main",
             regions: {
@@ -22,16 +22,16 @@ define([
             onDishAddOrder: function(childview, model) {
                 this.order.triggerMethod("new:order:item", model.toJSON());
             },
-            onShowConfirmation: function(childview, model) {
+            onShowConfirmation: function(childview, orderitems) {
                 var t = this;
-                console.log(model);
+
                 require(["views/table/orderConfirmationView"],
-                    function(ConfirmationView) {
-                        t.showChildView("content", new ConfirmationView({
-                            orderitems: model
+                    function (ConfirmationView) {
+                        t.addRegion("confirmation", "#confirmation");
+                        t.showChildView("confirmation", new ConfirmationView({
+                            orderitems: orderitems
                         }));
                     });
-                this.removeRegion("sidebar");
             },
             onRender: function() {
                 this.dishes = new dishesView();
@@ -44,5 +44,5 @@ define([
             }
         });
 
-        return orderLayout;
+        return OrderLayout;
     });

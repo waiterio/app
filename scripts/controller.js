@@ -13,7 +13,6 @@ define([
                 function(orderLayout) {
 
                     var orderLayout = new orderLayout();
-                    orderLayout.render();
 
                     App.main.show(orderLayout);
                 });
@@ -28,7 +27,6 @@ define([
                     function(OverviewView) {
 
                         var OverviewView = new OverviewView();
-                        OverviewView.render();
 
                         App.main.show(OverviewView);
                     });
@@ -45,7 +43,6 @@ define([
                     function(SelectView) {
 
                         var SelectView = new SelectView();
-                        SelectView.render();
 
                         App.main.show(SelectView);
                     });
@@ -54,7 +51,7 @@ define([
                 App.vent.trigger("setTitle", "Admin");
                 require(["views/backend/dashboardView"], function(view) {
                     var View = new view();
-                    View.render();
+
                     App.main.show(View);
                 });
             },

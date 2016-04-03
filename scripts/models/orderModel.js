@@ -9,7 +9,7 @@ define([
             sub: '/orders',
             defaults: {
                 "tablenumber": 1,
-                "ordertimestamp": new Date(),
+                "ordertimestamp": null,
                 "servingtimestamp": null,
                 "orderitems": []
             }

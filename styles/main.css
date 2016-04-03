@@ -9,20 +9,17 @@ html, body {
   width: 100%; }
 
 .dishes {
-  display: inline-block;
-  float: left;
-  width: 70%;
-  vertical-align: top; }
+  width: 100%; }
 
 .dishes--item {
+  background: #FFFFFF;
   width: calc(25% - 12px);
   display: inline-block;
+  cursor: pointer;
   vertical-align: top;
   height: 285px;
   margin: 5px;
   border: 1px solid lightgrey; }
-  .dishes--item:hover {
-    cursor: pointer; }
   .dishes--item .image {
     display: block;
     width: 100%;
@@ -30,7 +27,7 @@ html, body {
     background-repeat: no-repeat;
     background-size: cover; }
   .dishes--item .title {
-    text-align: center;
+    padding: 10px 10px 0 10px;
     font-size: 16px;
     text-transform: uppercase;
     margin-bottom: 0; }
@@ -38,10 +35,49 @@ html, body {
     margin: 0;
     padding: 10px; }
 
-.sidebar {
-  display: inline-block;
-  float: right;
+.order {
+  background: #FFFFFF;
+  border-left: 5px #880000 solid;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  transform: translate3d(100%, 0, 0);
+  transition: 0.2s ease transform;
   width: 25%; }
+  .order.out {
+    transform: translate3d(0, 0, 0); }
+
+#toggle {
+  background: #880000;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 25px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  margin-left: -55px;
+  height: 50px;
+  text-align: center;
+  width: 50px; }
+
+#submitOrder {
+  background: #555500;
+  color: #FFFFFF;
+  border: none;
+  height: 30px;
+  margin: 10px;
+  width: calc(100% - 20px); }
+
+.order__wrapper {
+  height: calc(100% - 50px);
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%; }
+
+.order--item img {
+  width: 100%; }
 
 .order__list--item {
   background: #e0e8e0;
