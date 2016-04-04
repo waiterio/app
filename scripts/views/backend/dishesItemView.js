@@ -4,8 +4,10 @@ define([
         'marionette',
         'underscore',
         'handlebars',
+        'models/dish',
+        'text!templates/backend/dishesItem.html',
         'views/backend/adminItemView'],
-    function ($, Backbone, Marionette, _, Handlebars, AdminItemView) {
+    function ($, Backbone, Marionette, _, Handlebars, model, tpl, AdminItemView) {
         var DishesItemView = AdminItemView.extend({
             className: 'dishes--item',
             ui: {
@@ -16,6 +18,7 @@ define([
                 "image": "[name='image']",
                 "input": "input, textarea"
             },
+            template: Handlebars.compile(tpl),
             events: {
                 "change @ui.input": "inputChanged",
                 "paste @ui.input": "inputChanged",

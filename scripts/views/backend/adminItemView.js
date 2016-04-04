@@ -6,9 +6,6 @@ define([
         'handlebars'],
     function ($, Backbone, Marionette, _, Handlebars) {
         var AdminItemView = Marionette.ItemView.extend({
-            initialize: function(options) {
-                this.template = Handlebars.compile(options.tpl);
-            },
             askRemove: function() {
                 var r = confirm(polyglot.t("delete.dish", {name: this.model.get("name")}));
                 if (r == true) {

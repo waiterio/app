@@ -7,8 +7,9 @@ define([
     function ($, Backbone, Marionette, _, Handlebars) {
         var DishesView = Marionette.CollectionView.extend({
             initialize: function(options) {
-                this.childTemplate = options.childTemplate;
                 this.$el.append("<div id='wrapper'></div>");
+
+                this.category = options.category;
 
                 switch (options.type) {
                     case "dishes":
@@ -26,7 +27,6 @@ define([
             },
             childViewOptions: function(model, index) {
                 var options = {
-                    tpl: this.childTemplate,
                     attributes: {
                         "data-cid": model.cid
                     }
@@ -49,8 +49,7 @@ define([
             },
             i: 0,
             addItem: function() {
-                this.collection.add(new this.model());
-                console.log(this.collection);
+                this.collection.add(new this.model({categories_id: this.category}));
             },
             tagName: "form"
         });

@@ -9,7 +9,7 @@ define([
         return {
             order: function () {
                 App.vent.trigger("setTitle","title.table.order");
-                require(["views/table/orderLayout"],
+                require(["views/table/tableLayout"],
                 function(orderLayout) {
 
                     var orderLayout = new orderLayout();
@@ -58,25 +58,10 @@ define([
             backendDishes: function() {
                 App.vent.trigger("setTitle", "title.backend.dishes");
                 require([
-                    "views/backend/adminView",
-                    "models/dish",
-                    "collections/dishes",
-                    "views/backend/dishesItemView",
-                    "text!templates/backend/dishesItem.html"
-                ], function(view, model, collection, childView, tpl) {
-                    var options = {
-                        model: model,
-                        collection: new collection(),
-                        childTemplate: tpl,
-                        childView: childView,
-                        type: "dishes"
-                    };
-                    var View = new view(options);
-                    View.collection.fetch({
-                        success: function() {
-                            View.triggerMethod("collection:fetched");
-                        }
-                    });
+                    "views/backend/tableLayout"
+                ], function(view) {
+                    var View = new view();
+
                     App.main.show(View);
                 });
             }

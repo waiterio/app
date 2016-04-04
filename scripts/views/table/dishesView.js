@@ -7,9 +7,6 @@ define([
         'views/table/dishesItemView'],
     function ($, Backbone, Marionette, _, Handlebars, dishesItemView) {
         var DishesView = Marionette.CollectionView.extend({
-            initialize: function(options) {
-                this.filtercategory = options.category;
-            },
             className: "dishes",
             childView: dishesItemView,
             childViewOptions: function(model, index) {
@@ -19,9 +16,6 @@ define([
                         "draggable": "true"
                     }
                 }
-            },
-            filter: function (child, index, collection) {
-                return child.get('categories_id') == this.filtercategory;
             },
             childEvents: {
                 "add:order": "DishAddOrder"
