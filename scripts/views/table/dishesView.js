@@ -4,12 +4,13 @@ define([
         'marionette',
         'underscore',
         'handlebars',
-        'collections/dishes',
         'views/table/dishesItemView'],
-    function ($, Backbone, Marionette, _, Handlebars, dishesCollection, dishesItemView) {
+    function ($, Backbone, Marionette, _, Handlebars, dishesItemView) {
         var DishesView = Marionette.CollectionView.extend({
+            initialize: function(options) {
+                this.filtercategory = options.category;
+            },
             className: "dishes",
-            collection: new dishesCollection(),
             childView: dishesItemView,
             childViewOptions: function(model, index) {
                 return {
@@ -18,6 +19,9 @@ define([
                         "draggable": "true"
                     }
                 }
+            },
+            filter: function (child, index, collection) {
+                return child.get('categories_id') == this.filtercategory;
             },
             childEvents: {
                 "add:order": "DishAddOrder"

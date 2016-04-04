@@ -4,10 +4,13 @@ define([
         'marionette',
         'underscore',
         'handlebars',
+        'collections/categories',
+        'collections/dishes',
         'views/table/dishesView',
         'views/table/orderView',
-        'text!templates/table/orderLayout.html'],
-    function ($, Backbone, Marionette, _, Handlebars, dishesView, orderView, tpl) {
+        'text!templates/table/orderLayout.html',
+        'text!templates/table/categoryLayout.html'],
+    function ($, Backbone, Marionette, _, Handlebars, categoriesCollection, dishesCollection, dishesView, orderView, tpl, categoryTpl) {
         var OrderLayout = Marionette.LayoutView.extend({
             template: Handlebars.compile(tpl),
             tagName: "main",
@@ -34,13 +37,39 @@ define([
                     });
             },
             onRender: function() {
-                this.dishes = new dishesView();
+                this.categories = new categoriesCollection();
+
+                var t = this;
+
+                this.dishes = [];
+                this.dishesCollection = new dishesCollection();
+
+                template = Handlebars.compile(categoryTpl);
+
+                this.categories.fetch({
+                    success: function(collection) {
+                        _.each(collection.models, function(category, key) {
+                            html = template({name: category.get("name"), id: category.id});
+
+                            t.$el.append(html);
+                            t.addRegion('category'+ category.id, ".categories[data-id='"+ category.id +"']");
+
+                            dishes = new dishesView({category: category.id, collection: t.dishesCollection});
+
+                            t.dishes.push(dishes);
+
+                            t.showChildView('category'+ model.id, dishes);
+                        });
+                    }
+                });
+
+                this.dishesCollection.fetch();
+
                 this.order = new orderView();
                 this.order.render();
 
                 this.showChildView('sidebar', this.order);
-                this.showChildView('content', this.dishes);
-                this.dishes.collection.fetch();
+
             }
         });
 

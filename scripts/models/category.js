@@ -6,7 +6,7 @@ define([
         'models/base'],
     function($, Backbone, Marionette, _, Model) {
         var OrderModel = Model.extend({
-            sub: '/orders'
+            sub: '/categories'
         });
 
         return OrderModel;
