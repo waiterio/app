@@ -6,8 +6,8 @@ define([
         'handlebars'],
     function ($, Backbone, Marionette, _, Handlebars) {
         var AdminItemView = Marionette.ItemView.extend({
-            askRemove: function() {
-                var r = confirm(polyglot.t("delete.dish", {name: this.model.get("name")}));
+            askRemove: function(msg) {
+                var r = confirm(msg);
                 if (r == true) {
                     this.destroy();
                 }
@@ -52,7 +52,7 @@ define([
                     delete this.autosaves.cid;
                 }
             },
-            onDestroy: function() {
+            destroy: function() {
                 this.model.destroy();
             }
         });

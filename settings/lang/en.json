@@ -9,7 +9,8 @@
     },
     "backend": {
       "start": "Admin",
-      "dishes": "Admin - Dishes"
+      "dishes": "Admin - Dishes",
+      "settings": "Admin - Konfiguration"
     }
   },
   "delete": {

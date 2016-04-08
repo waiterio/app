@@ -4,9 +4,11 @@ define([
         'backbone',
         'marionette',
         'handlebars',
-        'polyglot'
+        'polyglot',
+        'models/settings',
+        'models/language'
     ],
-    function ($, _, Backbone, Marionette, Handlebars, Polyglot) {
+    function ($, _, Backbone, Marionette, Handlebars, Polyglot, SettingsModel, LanguageModel) {
         Backbone.Marionette.TemplateCache.prototype.compileTemplate = function(rawTemplate) {
             return Handlebars.compile(rawTemplate);
         };
@@ -22,21 +24,24 @@ define([
         });
 
         App.on("start", function(){
-            $.getJSON('settings/settings.json', function(data) {
-                window.settings = data;
+            var settings = new SettingsModel();
+            settings.fetch({
+                success: function(model) {
+                    window.settings = model.toJSON();
 
-                $.getJSON('settings/lang/'+ data.locale +".json", function(phrases) {
-                    window.polyglot = new Polyglot(
-                        {
-                            phrases: phrases,
-                            locale: data.locale
+                    var language = new LanguageModel({code: model.get("locale")});
+                    language.fetch({
+                        success: function(phrases) {
+                            window.polyglot = new Polyglot({
+                                phrases: phrases.toJSON(),
+                                locale: model.get("locale")
+                            });
+
+                            Backbone.history.start({ root: "/"});
                         }
-                    );
-
-                    Backbone.history.start({ root: "/"});
-                });
+                    });
+                }
             });
-
         });
 
         App.vent.on("setTitle", function(title) {

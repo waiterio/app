@@ -24,7 +24,10 @@ define([
                 "paste @ui.input": "inputChanged",
                 "keyup @ui.input": "inputChanged",
                 "focus @ui.input": "stopAutosave",
-                "click @ui.remove": "askRemove"
+                "click @ui.remove": "remove"
+            },
+            remove: function() {
+                this.askRemove(polyglot.t('delete.dish', {name: this.model.get('name')}));
             },
             updateModel: function () {
                 this.model.unformatPrice(this.ui.price.val());

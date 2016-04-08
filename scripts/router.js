@@ -18,6 +18,7 @@ define([
                 "kitchen/menu": "menu",
                 "backend": "backend",
                 "backend/dishes": "backendDishes",
+                "backend/settings": "backendSettings",
                 "*actions": "select"
             }
 

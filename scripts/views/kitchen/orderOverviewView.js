@@ -12,7 +12,8 @@ define([
                 this.fetchOrders();
 
                 var t = this;
-                setInterval(function() {
+
+                this.renewOrder = setInterval(function() {
                     t.fetchOrders();
                 }, 60000);
             },
@@ -36,7 +37,7 @@ define([
                 this.render();
             },
             onDestroy: function() {
-
+                clearInterval(this.renewOrder);
             }
         });
 

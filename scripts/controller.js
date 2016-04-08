@@ -17,7 +17,6 @@ define([
                     App.main.show(orderLayout);
                 });
             },
-
             receipt:  function () {
                 console.log("Table - Receipt");
             },
@@ -50,6 +49,14 @@ define([
             backend: function() {
                 App.vent.trigger("setTitle", "title.backend.start");
                 require(["views/backend/dashboardView"], function(view) {
+                    var View = new view();
+
+                    App.main.show(View);
+                });
+            },
+            backendSettings: function() {
+                App.vent.trigger("setTitle", "title.backend.settings");
+                require(["views/backend/settingsView"], function(view) {
                     var View = new view();
 
                     App.main.show(View);
