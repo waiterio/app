@@ -1,4 +1,19 @@
 {
-  "locale": "de",
-  "currency": "Euro"
+  "tech": {
+    "apiurl": "http://192.168.1.12:8080/api"
+  },
+  "company": {
+    "name": "Waiter.io",
+    "color": "#000000"
+  },
+  "geo": {
+    "locale": "de",
+    "currency": {
+      "symbol": "€",
+      "format": "%v %s",
+      "thousand": ".",
+      "decimal": ",",
+      "precision": 2
+    }
+  }
 }

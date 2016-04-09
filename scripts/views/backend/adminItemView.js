@@ -9,51 +9,47 @@ define([
             askRemove: function(msg) {
                 var r = confirm(msg);
                 if (r == true) {
-                    this.destroy();
+                    this.removeIt();
                 }
             },
-            inputChanged: function() {
-                var cid = this.model.get("cid");
-                this.stopAutosave(cid);
-                this.updateModel();
-                this.autosave(cid);
-            },
-            autosaves: {},
-            autosave: function(cid) {
-                var t = this;
-                var autosave = setTimeout(function() {
-                    console.log(t.model.toJSON());
-                    t.model.save(t.model.toJSON(), {
-                        success: function() {
-                            t.saved();
-                        },
-                        error: function(model, response) {
-                            alert("cannot submit changes");
-                            console.log(response);
-                        }
-                    });
-                }, 3000);
-
-                this.autosaves[cid] = autosave;
-            },
-            saved: function() {
-                this.$el.css("background", "green");
-
+            checkIsChanging: function() {
                 var t = this;
                 setTimeout(function() {
-                    t.$el.css("background", "inherit");
-                }, 300);
+                    var isChanging = false;
 
-                this.render();
+                    t.ui.input.each(function (key, input) {
+                        if ($(input).is(":focus")) {
+                            isChanging = true;
+                        }
+                    });
+                    console.log(t.model.changedAttributes());
+                    if (isChanging === false) {
+                        t.prepareSave();
+                    }
+                }, 50);
             },
-            stopAutosave: function(cid) {
-                if(typeof this.autosaves[cid] !== 'undefined') {
-                    clearTimeout(this.autosaves[cid]);
-                    delete this.autosaves.cid;
-                }
+            prepareSave: function() {
+                var t = this;
+                this.updateModel();
+                t.model.save(null, {
+                    success: function() {
+                        t.saved();
+                    },
+                    error: function(model, response) {
+                        console.log(response);
+                    }
+                });
             },
-            destroy: function() {
-                this.model.destroy();
+            removeIt: function() {
+                var t = this;
+                this.model.destroy(null, {
+                    success: function() {
+                        t.destroy();
+                    },
+                    error: function(model, response) {
+                        console.log(response);
+                    }
+                });
             }
         });
 

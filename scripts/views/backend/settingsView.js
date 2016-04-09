@@ -8,9 +8,7 @@ define([
         'text!templates/backend/settings.html'],
     function ($, Backbone, Marionette, _, Handlebars, settingsModel, tpl) {
         var DishesView = Marionette.ItemView.extend({
-            initialize: function() {
-            },
-            model: new settingsModel(),
+            model: new settingsModel(window.settings),
             template: Handlebars.compile(tpl)
         });
 

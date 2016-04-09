@@ -13,13 +13,20 @@ define([
                 "input": "[name='name']"
             },
             events: {
-                "change @ui.input": "inputChanged",
-                "paste @ui.input": "inputChanged",
-                "keyup @ui.input": "inputChanged",
-                "focus @ui.input": "stopAutosave",
-                "click @ui.remove": "remove"
+                "focusout @ui.input": "checkIsChanging",
+                "click @ui.remove": "removeClicked"
             },
-            remove: function() {
+            saved: function() {
+                this.ui.input.css("border", "1px solid green");
+
+                var t = this;
+                setTimeout(function() {
+                    t.ui.input.css("border", "1px solid grey");
+                }, 300);
+
+                this.render();
+            },
+            removeClicked: function() {
                 this.askRemove(polyglot.t('delete.category', {name: this.model.get('name')}));
             },
             updateModel: function () {

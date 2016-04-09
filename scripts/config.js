@@ -10,7 +10,8 @@ requirejs.config({
         templates: "../templates",
         text: "vendor/text",
         handlebars: 'vendor/handlebars/handlebars',
-        polyglot: 'vendor/polyglot/polyglot.min'
+        polyglot: 'vendor/polyglot/polyglot.min',
+        accounting: 'vendor/accounting/accounting.min'
     },
 
     shim: {

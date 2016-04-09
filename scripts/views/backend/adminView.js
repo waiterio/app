@@ -5,9 +5,8 @@ define([
         'underscore',
         'handlebars'],
     function ($, Backbone, Marionette, _, Handlebars) {
-        var DishesView = Marionette.CollectionView.extend({
+        var AdminView = Marionette.CollectionView.extend({
             initialize: function(options) {
-                this.$el.append("<div id='wrapper'></div>");
 
                 this.category = options.category;
 
@@ -16,8 +15,6 @@ define([
                         this.className = "dishes";
                         break;
                 }
-
-                this.$el.append("<div class='add'>+</div>");
             },
             ui: {
                 "add": ".add"
@@ -32,8 +29,10 @@ define([
                     }
                 };
 
-                if(model.has("id")) {
+                if(!model.isNew()) {
                     options.attributes["data-id"] = model.get("id");
+                } else {
+                    options.attributes["data-new"] = "true";
                 }
                 return options;
             },
@@ -43,7 +42,7 @@ define([
                 }
                 else {
                     if (!collectionView._insertBefore(childView, index)){
-                        this.$el.children("#wrapper").append(childView.el);
+                        this.$el.append(childView.el);
                     }
                 }
             },
@@ -54,5 +53,5 @@ define([
             tagName: "form"
         });
 
-        return DishesView;
+        return AdminView;
     });

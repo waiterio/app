@@ -19,22 +19,34 @@ define([
                 "input": "input, textarea"
             },
             template: Handlebars.compile(tpl),
-            events: {
-                "change @ui.input": "inputChanged",
-                "paste @ui.input": "inputChanged",
-                "keyup @ui.input": "inputChanged",
-                "focus @ui.input": "stopAutosave",
-                "click @ui.remove": "remove"
+            templateHelpers: function() {
+                return {
+                    price: this.model.accounting.formatMoney(this.model.get("price") / 100)
+                }
             },
-            remove: function() {
+            events: {
+                "focusout @ui.input": "checkIsChanging",
+                "click @ui.remove": "removeClicked"
+            },
+            saved: function() {
+                this.$el.css("background", "green");
+
+                var t = this;
+                setTimeout(function() {
+                    t.$el.css("background", "inherit");
+                }, 300);
+
+                this.render();
+            },
+            removeClicked: function() {
                 this.askRemove(polyglot.t('delete.dish', {name: this.model.get('name')}));
             },
             updateModel: function () {
-                this.model.unformatPrice(this.ui.price.val());
                 this.model.set({
                     name: this.ui.name.val(),
                     description: this.ui.description.val(),
-                    image: this.ui.image.val()
+                    image: this.ui.image.val(),
+                    price: this.model.accounting.unformat(this.ui.price.val())
                 });
             }
         });

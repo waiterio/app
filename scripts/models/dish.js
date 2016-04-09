@@ -3,8 +3,9 @@ define([
         'backbone',
         'marionette',
         'underscore',
+        'accounting',
         'models/base'],
-    function($, Backbone, Marionette, _, Model) {
+    function($, Backbone, Marionette, _, accounting, Model) {
         var DishModel = Model.extend({
             sub: '/dishes',
             defaults: {
@@ -13,17 +14,9 @@ define([
                 price: 0,
                 image: ""
             },
-            validate: function() {
+            accounting: accounting,
+            validate: function(attributes, options) {
 
-            },
-            initialize: function() {
-                this.formatPrice(this.get("price"));
-            },
-            formatPrice: function(amount) {
-                this.set("price", parseInt(amount) / 100);
-            },
-            unformatPrice: function(amount) {
-                this.set("price", amount * 100);
             }
         });
 

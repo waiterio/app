@@ -30,6 +30,8 @@ define([
 
                 template = Handlebars.compile(categoryTpl);
 
+                var addDishes = [];
+
                 this.categories.fetch({
                     success: function(collection) {
                         _.each(collection.models, function(category, key) {
@@ -50,6 +52,8 @@ define([
                                 }
                             };
 
+                            addDishes.push(new dishModel({categories_id: category.id}));
+
                             dishesVw = new adminView(options);
 
                             categoryVw = new categoryItemView({
@@ -62,7 +66,11 @@ define([
                     }
                 });
 
-                this.dishesCollection.fetch();
+                this.dishesCollection.fetch({
+                    success: function() {
+                        t.dishesCollection.add(addDishes);
+                    }
+                });
 
             }
         });
