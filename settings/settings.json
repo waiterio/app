@@ -1,6 +1,6 @@
 {
   "tech": {
-    "apiurl": "http://192.168.1.12:8080/api"
+    "apiurl": "https://fathomless-crag-87118.herokuapp.com/api"
   },
   "company": {
     "name": "Waiter.io",
