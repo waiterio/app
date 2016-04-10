@@ -9,7 +9,7 @@ define([
         'views/backend/adminItemView'],
     function ($, Backbone, Marionette, _, Handlebars, model, tpl, AdminItemView) {
         var DishesItemView = AdminItemView.extend({
-            className: 'dishes--item',
+            className: 'dishes--item backend',
             ui: {
                 "remove": ".remove",
                 "name": "[name='name']",

@@ -1,8 +1,74 @@
-.dishes {
-  width: 100%;
+#content {
+  float: right;
+  width: calc(100% - 200px);
 }
 
 .dishes--item {
+  background: #FFFFFF;
+  width: 100%;
+  cursor: pointer;
+  margin: 15px 0;
+  padding-left: 10px;
+
+  img {
+    width: 150px;
+    height: auto;
+  }
+
+  .infos {
+    display: inline-block;
+    width: calc(100% - 160px);
+    vertical-align: top;
+  }
+
+  .title {
+    padding: 0px 10px 0 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .description, .price {
+    margin: 0;
+    padding: 10px;
+  }
+
+  .price {
+    float: right;
+    padding-right: 35px;
+  }
+}
+
+.category {
+  & h3 {
+    display: inline-block;
+    font-weight: 200;
+    margin-bottom: 5px;
+    border-bottom: 1px solid;
+  }
+}
+
+#categorylinks {
+  width: 200px;
+  float: left;
+
+  & ul {
+    left: 10px;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    position: fixed;
+    list-style: none;
+
+    & li {
+      color: #555;
+      padding: 5px 0;
+    }
+  }
+}
+
+.backend.dishes--item {
   background: #FFFFFF;
   width: calc(25% - 12px);
   display: inline-block;

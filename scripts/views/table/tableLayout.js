@@ -16,6 +16,7 @@ define([
             template: Handlebars.compile(tpl),
             tagName: "main",
             regions: {
+                categorylinks: "#categorylinks",
                 content: "#content",
                 sidebar: "#sidebar"
             },
@@ -62,14 +63,29 @@ define([
                             });
 
                             categoryVw = new categoryItemView({
+                                tagName: "h3",
                                 model: category
                             });
 
                             t.showChildView('category'+ category.id, categoryVw);
                             t.showChildView('dishes'+ category.id, dishesVw);
                         });
+
+                        var categoryLinks = Marionette.CollectionView.extend({
+                            tagName: "ul",
+                            childView: categoryItemView,
+                            collection: collection,
+                            childViewOptions: {
+                                "tagName": "li"
+                            }
+                        });
+
+
+                        t.showChildView('categorylinks', new categoryLinks());
+
                     }
                 });
+
 
                 this.dishesCollection.fetch();
 
@@ -77,7 +93,6 @@ define([
                 this.order.render();
 
                 this.showChildView('sidebar', this.order);
-
             }
         });
 

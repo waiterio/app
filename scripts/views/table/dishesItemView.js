@@ -17,7 +17,10 @@ define([
             setDragData: function(evt) {
                 evt.originalEvent.dataTransfer.setData('model',JSON.stringify(this.model));
             },
-            template: Handlebars.compile(tpl)
+            template: Handlebars.compile(tpl),
+            templateHelpers: function() {
+                return { price: this.model.accounting.formatMoney(this.model.get("price") / 100) }
+            }
         });
 
         return DishesItemView;
