@@ -29,6 +29,22 @@ define([
             removeClicked: function() {
                 this.askRemove(polyglot.t('delete.category', {name: this.model.get('name')}));
             },
+            checkChangedAttributes: function() {
+                var attr = {
+                    "id": this.model.get("id"),
+                    "name": this.ui.input.val()
+                };
+
+                for (var key in this.model.attributes) {
+                    if (this.model.attributes.hasOwnProperty(key)) {
+                        if(attr[key] != this.model.attributes[key]) {
+                            return true;
+                        }
+                    }
+                }
+
+                return false;
+            },
             updateModel: function () {
                 this.model.set({
                     name: this.ui.input.val()

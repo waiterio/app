@@ -22,8 +22,8 @@ define([
                             isChanging = true;
                         }
                     });
-                    console.log(t.model.changedAttributes());
-                    if (isChanging === false) {
+
+                    if (isChanging === false && t.checkChangedAttributes()) {
                         t.prepareSave();
                     }
                 }, 50);

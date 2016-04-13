@@ -48,6 +48,26 @@ define([
                     image: this.ui.image.val(),
                     price: this.model.accounting.unformat(this.ui.price.val())
                 });
+            },
+            checkChangedAttributes: function() {
+                var attr = {
+                    "id": this.model.get("id"),
+                    "image": this.ui.image.val(),
+                    "name": this.ui.name.val(),
+                    "price": this.model.accounting.unformat(this.ui.price.val()),
+                    "description": this.ui.description.val(),
+                    "categories_id": this.model.get("categories_id")
+                };
+
+                for (var key in this.model.attributes) {
+                    if (this.model.attributes.hasOwnProperty(key)) {
+                        if(attr[key] != this.model.attributes[key]) {
+                            return true;
+                        }
+                    }
+                }
+
+                return false;
             }
         });
 
