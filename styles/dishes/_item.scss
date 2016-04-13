@@ -78,6 +78,10 @@
   margin: 5px;
   border: 1px solid lightgrey;
 
+  &[data-new='true'] .remove {
+    display: none;
+  }
+
   .image {
     display: block;
     width: 100%;

@@ -67,6 +67,8 @@ html, body {
   height: 285px;
   margin: 5px;
   border: 1px solid lightgrey; }
+  .backend.dishes--item[data-new='true'] .remove {
+    display: none; }
   .backend.dishes--item .image {
     display: block;
     width: 100%;

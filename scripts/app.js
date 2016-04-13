@@ -25,6 +25,7 @@ define([
         });
 
         App.on("start", function(){
+
             var settings = new SettingsModel();
             settings.fetch({
                 success: function(model) {
@@ -40,7 +41,7 @@ define([
                                 locale: model.get("geo").locale
                             });
 
-                            Backbone.history.start({ root: "/"});
+                            Backbone.history.start({root: "/"});
                         }
                     });
                 }

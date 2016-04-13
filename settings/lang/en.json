@@ -13,7 +13,8 @@
       "settings": "Admin - Konfiguration"
     }
   },
-  "delete": {
+  "destroy": {
+    "default": "Are you really like to delete it?",
     "dish": "Are you really like to delete %{name}?"
   }
 }

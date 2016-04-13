@@ -3,10 +3,11 @@ define([
     'backbone',
     'marionette',
     'underscore',
-    'collections/base'],
-    function($, Backbone, Marionette, _, Collection) {
-        var CategoriesCollection = Collection.extend({
-            sub: '/categories'
+    'models/category'],
+    function($, Backbone, Marionette, _, model) {
+        var CategoriesCollection = Backbone.Collection.extend({
+            url: window.settings.tech.apiurl + '/categories',
+            model: model
         });
 
         return CategoriesCollection;

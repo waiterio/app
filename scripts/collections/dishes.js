@@ -3,12 +3,10 @@ define([
         'backbone',
         'marionette',
         'underscore',
-        'collections/base',
-        'models/dish'
-        ],
-    function($, Backbone, Marionette, _, Collection, model) {
-        var DishesCollection = Collection.extend({
-            sub: '/dishes',
+        'models/dish'],
+    function($, Backbone, Marionette, _, model) {
+        var DishesCollection = Backbone.Collection.extend({
+            url: window.settings.tech.apiurl + '/dishes',
             model: model
         });
 

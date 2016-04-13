@@ -2,11 +2,10 @@ define([
         'jquery',
         'backbone',
         'marionette',
-        'underscore',
-        'models/base'],
-    function($, Backbone, Marionette, _, Model) {
-        var OrderModel = Model.extend({
-            sub: '/orders',
+        'underscore'],
+    function($, Backbone, Marionette, _) {
+        var OrderModel = Backbone.Model.extend({
+            url: window.settings.tech.apiurl + '/orders',
             defaults: {
                 "tablenumber": 1,
                 "ordertimestamp": null,

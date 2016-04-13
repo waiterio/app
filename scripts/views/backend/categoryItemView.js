@@ -4,51 +4,43 @@ define([
         'marionette',
         'underscore',
         'handlebars',
-        'text!templates/backend/category.html',
-        'views/backend/adminItemView'],
-    function ($, Backbone, Marionette, _, Handlebars, tpl, AdminItemView) {
-        var CategoryItemView = AdminItemView.extend({
+        'behaviors/destroyWarning',
+        'behaviors/focusoutSave',
+        'text!templates/backend/category.html'],
+    function ($, Backbone, Marionette, _, Handlebars, destroyWarning, focusoutSave, tpl) {
+        var CategoryItemView = Marionette.ItemView.extend({
             ui: {
-                "remove": ".remove",
-                "input": "[name='name']"
+                "input": "[name='name']",
+                name: "[name='name']"
             },
             events: {
-                "focusout @ui.input": "checkIsChanging",
-                "click @ui.remove": "removeClicked"
             },
-            saved: function() {
-                this.ui.input.css("border", "1px solid green");
+            behaviors: {
+                DestroyWarning: {
+                    behaviorClass: destroyWarning,
+                    message: "destroy.category"
+                },
+                FocusOutSave: {
+                    behaviorClass: focusoutSave
+                }
+            },
+            getUIdata: function() {
+                return {
+                    "name": this.ui.name.val()
+                }
+            },
+            modelEvents: {
+                "sync": "onSynced"
+            },
+            onSynced: function() {
+                this.$el.css("background", "green");
 
                 var t = this;
                 setTimeout(function() {
-                    t.ui.input.css("border", "1px solid grey");
+                    t.$el.css("background", "inherit");
                 }, 300);
 
                 this.render();
-            },
-            removeClicked: function() {
-                this.askRemove(polyglot.t('delete.category', {name: this.model.get('name')}));
-            },
-            checkChangedAttributes: function() {
-                var attr = {
-                    "id": this.model.get("id"),
-                    "name": this.ui.input.val()
-                };
-
-                for (var key in this.model.attributes) {
-                    if (this.model.attributes.hasOwnProperty(key)) {
-                        if(attr[key] != this.model.attributes[key]) {
-                            return true;
-                        }
-                    }
-                }
-
-                return false;
-            },
-            updateModel: function () {
-                this.model.set({
-                    name: this.ui.input.val()
-                });
             },
             template: Handlebars.compile(tpl)
         });

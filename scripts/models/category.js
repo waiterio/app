@@ -2,11 +2,13 @@ define([
         'jquery',
         'backbone',
         'marionette',
-        'underscore',
-        'models/base'],
-    function($, Backbone, Marionette, _, Model) {
-        var OrderModel = Model.extend({
-            sub: '/categories'
+        'underscore'],
+    function($, Backbone, Marionette, _) {
+        var OrderModel = Backbone.Model.extend({
+            defaults: {
+                name: ""
+            },
+            url: window.settings.tech.apiurl + '/categories'
         });
 
         return OrderModel;

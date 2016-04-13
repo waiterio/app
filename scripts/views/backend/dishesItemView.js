@@ -5,10 +5,24 @@ define([
         'underscore',
         'handlebars',
         'models/dish',
-        'text!templates/backend/dishesItem.html',
-        'views/backend/adminItemView'],
-    function ($, Backbone, Marionette, _, Handlebars, model, tpl, AdminItemView) {
-        var DishesItemView = AdminItemView.extend({
+        'behaviors/destroyWarning',
+        'behaviors/focusoutSave',
+        'text!templates/backend/dishesItem.html'],
+    function ($, Backbone, Marionette, _, Handlebars, model, destroyWarning, focusoutSave, tpl) {
+        var DishesItemView = Marionette.ItemView.extend({
+            attributes: function() {
+                var options = {
+                    "data-cid": this.model.cid
+                };
+
+                if(!this.model.isNew()) {
+                    options["data-id"] = this.model.get("id");
+                } else {
+                    options["data-new"] = "true";
+                }
+
+                return options;
+            },
             className: 'dishes--item backend',
             ui: {
                 "remove": ".remove",
@@ -18,17 +32,33 @@ define([
                 "image": "[name='image']",
                 "input": "input, textarea"
             },
+            behaviors: {
+                DestroyWarning: {
+                    behaviorClass: destroyWarning,
+                    message: "destroy.dish"
+                },
+                FocusOutSave: {
+                    behaviorClass: focusoutSave
+                }
+            },
+            getUIdata: function() {
+                return {
+                    "image": this.ui.image.val(),
+                    "name": this.ui.name.val(),
+                    "price": this.model.accounting.unformat(this.ui.price.val()),
+                    "description": this.ui.description.val()
+                };
+            },
             template: Handlebars.compile(tpl),
             templateHelpers: function() {
                 return {
                     price: this.model.accounting.formatMoney(this.model.get("price") / 100)
                 }
             },
-            events: {
-                "focusout @ui.input": "checkIsChanging",
-                "click @ui.remove": "removeClicked"
+            modelEvents: {
+                "sync": "onSynced"
             },
-            saved: function() {
+            onSynced: function() {
                 this.$el.css("background", "green");
 
                 var t = this;
@@ -38,36 +68,8 @@ define([
 
                 this.render();
             },
-            removeClicked: function() {
-                this.askRemove(polyglot.t('delete.dish', {name: this.model.get('name')}));
-            },
-            updateModel: function () {
-                this.model.set({
-                    name: this.ui.name.val(),
-                    description: this.ui.description.val(),
-                    image: this.ui.image.val(),
-                    price: this.model.accounting.unformat(this.ui.price.val())
-                });
-            },
-            checkChangedAttributes: function() {
-                var attr = {
-                    "id": this.model.get("id"),
-                    "image": this.ui.image.val(),
-                    "name": this.ui.name.val(),
-                    "price": this.model.accounting.unformat(this.ui.price.val()),
-                    "description": this.ui.description.val(),
-                    "categories_id": this.model.get("categories_id")
-                };
-
-                for (var key in this.model.attributes) {
-                    if (this.model.attributes.hasOwnProperty(key)) {
-                        if(attr[key] != this.model.attributes[key]) {
-                            return true;
-                        }
-                    }
-                }
-
-                return false;
+            onDestroy: function() {
+                this.model.destroy();
             }
         });
 

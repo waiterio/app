@@ -4,16 +4,13 @@ define([
         'marionette',
         'underscore',
         'handlebars',
-        'models/category',
         'collections/categories',
-        'models/dish',
         'collections/dishes',
-        'views/backend/adminView',
+        'views/backend/dishesView',
         'views/backend/categoryItemView',
-        'views/backend/dishesItemView',
         'text!templates/table/orderLayout.html',
         'text!templates/backend/categoryLayout.html'],
-    function ($, Backbone, Marionette, _, Handlebars, categoryModel, categoriesCollection, dishModel, dishesCollection, adminView, categoryItemView, dishesItemView, tpl, categoryTpl) {
+    function ($, Backbone, Marionette, _, Handlebars, categoriesCollection, dishesCollection, dishesView, categoryItemView, tpl, categoryTpl) {
         var TableLayout = Marionette.LayoutView.extend({
             template: Handlebars.compile(tpl),
             tagName: "main",
@@ -23,55 +20,52 @@ define([
             },
             onRender: function() {
                 this.categories = new categoriesCollection();
-
                 var t = this;
-
                 this.dishesCollection = new dishesCollection();
-
-                template = Handlebars.compile(categoryTpl);
-
-                var addDishes = [];
 
                 this.categories.fetch({
                     success: function(collection) {
                         _.each(collection.models, function(category, key) {
-                            html = template({name: category.get("name"), id: category.id});
-
-                            t.$el.children("#content").append(html);
-                            t.addRegion('category'+ category.id, ".categories[data-id='"+ category.id +"'] .category");
-                            t.addRegion('dishes'+ category.id, ".categories[data-id='"+ category.id +"'] .dishes");
-
-                            options = {
-                                collection: t.dishesCollection,
-                                childView: dishesItemView,
-                                type: "dishes",
-                                model: dishModel,
-                                category: category.id,
-                                filter: function (child, index, collection) {
-                                    return child.get('categories_id') == category.id;
-                                }
-                            };
-
-                            addDishes.push(new dishModel({categories_id: category.id}));
-
-                            dishesVw = new adminView(options);
-
-                            categoryVw = new categoryItemView({
-                                model: category
-                            });
-
-                            t.showChildView('category'+ category.id, categoryVw);
-                            t.showChildView('dishes'+ category.id, dishesVw);
+                            t.initRegion();
+                            t.addCategory(category);
+                            t.addDishes(category);
                         });
+
+                        t.initRegion();
+                        t.addCategory(new t.categories.model());
                     }
                 });
 
-                this.dishesCollection.fetch({
-                    success: function() {
-                        t.dishesCollection.add(addDishes);
-                    }
+                this.dishesCollection.fetch();
+            },
+            categoryCount: 0,
+            initRegion: function() {
+                this.categoryCount++;
+
+                template = Handlebars.compile(categoryTpl);
+                html = template({id: this.categoryCount});
+
+                this.addRegion('category'+ this.categoryCount, ".categories[data-id='"+ this.categoryCount +"'] .category");
+                this.addRegion('dishes'+ this.categoryCount, ".categories[data-id='"+ this.categoryCount +"'] .dishes");
+
+                this.$el.children("#content").append(html);
+            },
+            addCategory: function(category) {
+                categoryVw = new categoryItemView({
+                    model: category
                 });
 
+                this.showChildView('category'+ this.categoryCount, categoryVw);
+            },
+            addDishes: function(category) {
+                options = {
+                    collection: this.dishesCollection,
+                    category: category.id
+                };
+
+                dishesVw = new dishesView(options);
+
+                this.showChildView('dishes'+ this.categoryCount, dishesVw);
             }
         });
 
