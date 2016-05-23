@@ -71,6 +71,20 @@ define([
 
                     App.main.show(View);
                 });
+            },
+            login: function() {
+                if(!Backbone.OAuth2.isAuthenticated()) {
+                    App.vent.trigger("setTitle", "title.login");
+                    require([
+                        "views/loginView"
+                    ], function (view) {
+                        var View = new view();
+
+                        App.main.show(View);
+                    });
+                } else {
+                    window.location.hash = "#";
+                }
             }
         }
 

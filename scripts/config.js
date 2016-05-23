@@ -4,6 +4,7 @@ requirejs.config({
 
     paths: {
         backbone: "vendor/backbone/backbone.min",
+        backboneoauth: "vendor/backbone/oauth/backbone.oauth2",
         marionette: "vendor/marionette/backbone.marionette.min",
         underscore: "vendor/underscore/underscore.min",
         jquery: "vendor/jquery/jquery.min",
@@ -21,6 +22,10 @@ requirejs.config({
         backbone: {
             deps: ["jquery", "underscore"],
             exports: "Backbone"
+        },
+        backboneoauth: {
+            deps: ["jquery", "underscore", "backbone"],
+            exports: "BackboneOauth"
         },
         jquery: {
             exports: "$"

@@ -16,12 +16,12 @@ define([
                 "kitchen/orders" : "orderList",
                 "kitchen/orders/history" : "orderHistory",
                 "kitchen/menu": "menu",
+                "login": "login",
                 "backend": "backend",
                 "backend/dishes": "backendDishes",
                 "backend/settings": "backendSettings",
                 "*actions": "select"
             }
-
         });
 
         return new AppRouter({controller: controller});

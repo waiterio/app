@@ -13,8 +13,6 @@ define([
                 "input": "[name='name']",
                 name: "[name='name']"
             },
-            events: {
-            },
             behaviors: {
                 DestroyWarning: {
                     behaviorClass: destroyWarning,
@@ -31,6 +29,9 @@ define([
             },
             modelEvents: {
                 "sync": "onSynced"
+            },
+            onNewModelSaved: function() {
+                this.triggerMethod("new:category");
             },
             onSynced: function() {
                 this.$el.css("background", "green");

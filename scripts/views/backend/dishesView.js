@@ -12,13 +12,10 @@ define([
             },
             className: "dishes",
             childView: dishesItemView,
-            childEvents: {
-                'new:model:saved': 'onChildNewModelSaved'
-            },
             filter: function (child, index, collection) {
                 return child.get('categories_id') == this.category;
             },
-            onChildNewModelSaved: function() {
+            onChildviewNewModelSaved: function() {
                 this.addItem();
             },
             addItem: function() {

@@ -6,7 +6,7 @@ define([
         'accounting'],
     function($, Backbone, Marionette, _, accounting) {
         var DishModel = Backbone.Model.extend({
-            url: window.settings.tech.apiurl + '/dishes',
+            sub: "/dishes",
             defaults: {
                 name: "",
                 description: "",

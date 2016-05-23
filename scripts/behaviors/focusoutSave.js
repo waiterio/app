@@ -11,9 +11,13 @@ define([
                 "focusout @ui.input": "onFieldOutOfFocus"
             },
             onFieldOutOfFocus: function() {
-                if(!this.checkViewOnFocus() && this.checkModelChanged()) {
-                    this.saveModel();
-                }
+                var t = this;
+                this.checkViewOnFocus(function(focused) {
+                    if(!focused && t.checkModelChanged()) {
+                        t.saveModel();
+                    }
+                })
+
             },
             checkModelChanged: function() {
                 var attr = this.view.getUIdata();
@@ -25,7 +29,7 @@ define([
 
                 return false;
             },
-            checkViewOnFocus: function() {
+            checkViewOnFocus: function(callback) {
                 var t = this;
                 setTimeout(function() {
                     var isFocused = false;
@@ -35,7 +39,7 @@ define([
                         }
                     });
 
-                    return isFocused;
+                    callback(isFocused);
                 }, 50);
             },
             updateModel: function () {
@@ -49,7 +53,7 @@ define([
                 this.view.model.save(null, {
                     success: function() {
                         if(newModel) {
-                            t.triggerMethod("new:model:saved");
+                            t.view.triggerMethod("new:model:saved");
                         }
                     },
                     error: function(model, response) {

@@ -2,6 +2,7 @@ define([
         'jquery',
         'underscore',
         'backbone',
+        'backboneoauth',
         'marionette',
         'handlebars',
         'polyglot',
@@ -9,7 +10,7 @@ define([
         'models/language',
         'accounting'
     ],
-    function ($, _, Backbone, Marionette, Handlebars, Polyglot, SettingsModel, LanguageModel, accounting) {
+    function ($, _, Backbone, BackboneOauth, Marionette, Handlebars, Polyglot, SettingsModel, LanguageModel, accounting) {
         Backbone.Marionette.TemplateCache.prototype.compileTemplate = function(rawTemplate) {
             return Handlebars.compile(rawTemplate);
         };
@@ -40,6 +41,29 @@ define([
                                 phrases: phrases.toJSON(),
                                 locale: model.get("geo").locale
                             });
+
+
+
+                            Backbone.OAuth2 = new BackboneOauth({
+                                accessUrl   : model.get('tech').url + '/auth/token',
+                                refreshUrl  : model.get('tech').apiurl + '/refresh',
+                                revokeUrl   : model.get('tech').apiurl + '/revoke'
+                            });
+
+                            if(!Backbone.OAuth2.isAuthenticated()) {
+                                window.location.hash = '#/login';
+                            } else {
+                                $.ajaxSetup({
+                                    headers: {
+                                        'access-token': JSON.parse(window.localStorage.getItem("__oauth2")).access_token
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        if (jqXHR.status == 401 || jqXHR.status == 403) {
+                                            window.location.hash.replace('#/login');
+                                        }
+                                    }
+                                });
+                            }
 
                             Backbone.history.start({root: "/"});
                         }
