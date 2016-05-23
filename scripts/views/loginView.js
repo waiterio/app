@@ -10,21 +10,15 @@ define([
             ui: {
                 "username": "[name='username']",
                 "password": "[name='password']",
-                "logout": "#logout",
                 "submit": "[type='submit']"
             },
             events: {
-                "click @ui.logout": "logout",
                 "click @ui.submit": "login"
             },
             login: function() {
                 event.preventDefault();
                 Backbone.OAuth2.access(this.ui.username.val(), this.ui.password.val());
                 return false;
-            },
-            logout: function() {
-                event.preventDefault();
-                Backbone.OAuth2.revoke();
             },
             template: Handlebars.compile(tpl)
         });

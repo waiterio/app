@@ -8,9 +8,10 @@ define([
         'polyglot',
         'models/settings',
         'models/language',
-        'accounting'
+        'accounting',
+        'views/mainLayout'
     ],
-    function ($, _, Backbone, BackboneOauth, Marionette, Handlebars, Polyglot, SettingsModel, LanguageModel, accounting) {
+    function ($, _, Backbone, BackboneOauth, Marionette, Handlebars, Polyglot, SettingsModel, LanguageModel, accounting, mainLayout) {
         Backbone.Marionette.TemplateCache.prototype.compileTemplate = function(rawTemplate) {
             return Handlebars.compile(rawTemplate);
         };
@@ -18,7 +19,7 @@ define([
         var App = new Backbone.Marionette.Application();
 
         App.addRegions({
-            main: '#main'
+            app: '#app'
         });
 
         App.addInitializer(function(options) {
@@ -26,6 +27,8 @@ define([
         });
 
         App.on("start", function(){
+            this.layout = new mainLayout();
+            this.app.show(this.layout);
 
             var settings = new SettingsModel();
             settings.fetch({
@@ -46,13 +49,15 @@ define([
 
                             Backbone.OAuth2 = new BackboneOauth({
                                 accessUrl   : model.get('tech').url + '/auth/token',
-                                refreshUrl  : model.get('tech').apiurl + '/refresh',
-                                revokeUrl   : model.get('tech').apiurl + '/revoke'
+                                refreshUrl  : model.get('tech').url + '/auth/refresh',
+                                revokeUrl   : model.get('tech').url + '/auth/revoke'
                             });
+
 
                             if(!Backbone.OAuth2.isAuthenticated()) {
                                 window.location.hash = '#/login';
                             } else {
+                                App.layout.handleLogout(true);
                                 $.ajaxSetup({
                                     headers: {
                                         'access-token': JSON.parse(window.localStorage.getItem("__oauth2")).access_token
@@ -70,10 +75,6 @@ define([
                     });
                 }
             });
-        });
-
-        App.vent.on("setTitle", function(title) {
-            $("#pageTitle").html(polyglot.t(title));
         });
 
         return App;

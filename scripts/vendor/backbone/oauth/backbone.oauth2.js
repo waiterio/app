@@ -190,17 +190,6 @@ define([
         },
 
         /**
-         * Capitalizes a given string in order to return the correct name for the
-         * token type.
-         *
-         * @param {string} str
-         * @returns {string}
-         */
-        getNormalizedTokenType: function (str) {
-            return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-        },
-
-        /**
          * Returns the full authorization header
          *
          * @returns {object}
@@ -208,7 +197,7 @@ define([
         getAuthorizationHeader: function () {
             if (this.isAuthenticated()) {
                 return {
-                    'authorization': this.getNormalizedTokenType(this.state.token_type) + ' ' + this.state.access_token
+                    'authorization': this.state.token_type + ' ' + this.state.access_token
                 };
             }
             throw 'Unauthorized, please use access() to authenticate first';
