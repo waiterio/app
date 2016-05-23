@@ -1,0 +1,20 @@
+@import "settings";
+
+.button {
+  padding: 5px 14px;
+  width: 100%;
+  outline: none;
+  border: 2px solid $accentColor;
+  border-radius: $defaultBorderRadius;
+  background-color: $accentColor;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all $defaultAnimationTime;
+
+  &:hover {
+    border-color: lighten($accentColor, 5%);
+    background-color: lighten($accentColor, 5%);
+    cursor: pointer;
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "waiter.io",
+  "name": "waiter.io-frontend",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/waiterio/app.git"
   },
-  "author": "Jonah Moeller, Sebastian Ruehmann",
+  "author": "Sebastian Ruehmann, Jonah Moeller",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/waiterio/app/issues"

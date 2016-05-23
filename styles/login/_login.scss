@@ -1,0 +1,20 @@
+@import '../common/settings';
+
+.login {
+  margin: 100px auto;
+  padding: 40px;
+  max-width: 350px;
+  border: 1px solid $secondaryGray;
+  background-color: white;
+
+  .logo {
+    display: block;
+    margin-right: auto;
+    margin-bottom: 30px;
+    margin-left: auto;
+  }
+
+  .button.primary {
+    margin-top: 15px;
+  }
+}
