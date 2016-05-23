@@ -1,6 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
 * {
   box-sizing: border-box;
-  font-family: sans-serif; }
+  font-family: 'Ubuntu', sans-serif; }
 
 html, body {
   margin: 0;
@@ -8,16 +9,27 @@ html, body {
   padding: 0;
   width: 100%; }
 
+input, textarea {
+  font-size: 15px;
+  outline: none;
+  padding: 3px 5px;
+  border: 1px solid lightgray;
+  color: #2a2a2a; }
+
+textarea {
+  resize: none;
+  height: 75px; }
+
 #content {
   float: right;
   width: calc(100% - 200px); }
 
 .dishes--item {
-  background: #FFFFFF;
+  background: #ffffff;
   width: 100%;
   cursor: pointer;
   margin: 15px 0;
-  padding-left: 10px; }
+  padding: 5px; }
   .dishes--item img {
     width: 150px;
     height: auto; }
@@ -55,16 +67,16 @@ html, body {
     position: fixed;
     list-style: none; }
     #categorylinks ul li {
-      color: #555;
+      color: #555555;
       padding: 5px 0; }
 
 .backend.dishes--item {
-  background: #FFFFFF;
-  width: calc(25% - 12px);
+  background: #ffffff;
+  width: calc(20% - 12px);
   display: inline-block;
   cursor: pointer;
   vertical-align: top;
-  height: 285px;
+  min-height: 285px;
   margin: 5px;
   border: 1px solid lightgrey; }
   .backend.dishes--item[data-new='true'] .remove {
@@ -74,7 +86,8 @@ html, body {
     width: 100%;
     height: 150px;
     background-repeat: no-repeat;
-    background-size: cover; }
+    background-size: cover;
+    margin-bottom: 5px; }
   .backend.dishes--item .title {
     padding: 10px 10px 0 10px;
     font-size: 16px;
@@ -83,6 +96,23 @@ html, body {
   .backend.dishes--item .description, .backend.dishes--item .price {
     margin: 0;
     padding: 10px; }
+  .backend.dishes--item input, .backend.dishes--item textarea {
+    width: 100%;
+    margin-bottom: 5px; }
+
+.destroy {
+  color: #cc3333;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 3px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  background: #ffffff;
+  transition: all 150ms; }
+  .destroy:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #cc3333; }
 
 .order {
   background: #FFFFFF;
@@ -148,3 +178,5 @@ html, body {
     .order__list--item .order__list--item--dishes .name {
       display: inline-block;
       margin: 0; }
+
+/*# sourceMappingURL=main.css.map */
