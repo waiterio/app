@@ -58,7 +58,7 @@ define([
                                         'access-token': JSON.parse(window.localStorage.getItem("__oauth2")).access_token
                                     },
                                     error: function (jqXHR, textStatus, errorThrown) {
-                                        if (jqXHR.status == 401 || jqXHR.status == 403) {
+                                        if (jqXHR.status == 401) {
                                             window.location.hash.replace('#/login');
                                         }
                                     }
