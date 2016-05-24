@@ -1,20 +1,113 @@
 @import "settings";
 
-.button {
-  padding: 5px 14px;
-  width: 100%;
-  outline: none;
-  border: 2px solid $accentColor;
-  border-radius: $defaultBorderRadius;
-  background-color: $accentColor;
-  color: white;
-  font-weight: 700;
+$button-namespace: "btn" !default;
+
+$button-color-primary: white;
+$button-background-primary: $accentColor;
+$button-border-primary: $accentColor;
+
+$button-color-secondary: $accentColor;
+$button-background-secondary: transparent;
+$button-border-secondary: $accentColor;
+
+.#{$button-namespace} {
+  display: inline-block;
+  padding: 5px 12px;
+
   font-size: 14px;
-  transition: all $defaultAnimationTime;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+
+  border: 2px solid $secondaryGray;
+  border-radius: $defaultBorderRadius;
+
+  outline: none;
+  cursor: pointer;
+
+  &[disabled], &#{&}--disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
 
   &:hover {
-    border-color: lighten($accentColor, 5%);
-    background-color: lighten($accentColor, 5%);
-    cursor: pointer;
+    text-decoration: none;
+  }
+
+  &#{&}--big {
+    padding: 10px 26px;
+  }
+
+  &#{&}--full {
+    display: block;
+    width: 100%;
+  }
+
+  &#{&}--primary {
+    color: $button-color-primary;
+    border-color: $button-border-primary;
+    background-color: $button-background-primary;
+
+    &:hover:not(:disabled), &:active:not(:disabled) {
+      background-color: lighten($button-background-primary, 7%);
+      border-color: lighten($button-background-primary, 7%);
+    }
+  }
+
+  &#{&}--secondary {
+    color: $button-color-secondary;
+    border-color: $button-border-secondary;
+    background: $button-background-secondary;
+
+    &:hover:not(:disabled), &:active:not(:disabled) {
+      background-color: lighten($button-background-secondary, 7%);
+      border-color: lighten($button-border-secondary, 7%);
+    }
+  }
+
+  //&#{&}--tertiary {
+  //  color: $DBbutton-text-tertiary;
+  //  border-color: $DBbutton-border-tertiary;
+  //  background-color: $DBbutton-background-fallback-tertiary;
+  //  background: $DBbutton-background-tertiary;
+  //
+  //  &:hover:not(:disabled) {
+  //    background: $DBbutton-background-tertiary-hover;
+  //  }
+  //
+  //  &:active:not(:disabled) {
+  //    background: $DBbutton-background-tertiary-active;
+  //  }
+  //}
+}
+
+.#{$button-namespace}-group {
+  display: flex;
+
+  .#{$button-namespace} {
+    margin: 0;
+    border-radius: 0;
+
+    + .#{$button-namespace} {
+      border-left: 0;
+    }
+
+    &:first-child {
+      border-top-left-radius: $defaultBorderRadius;
+      border-bottom-left-radius: $defaultBorderRadius;
+    }
+
+    &:last-child {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+
+  &--justify {
+    width: 100%;
+
+    .#{$button-namespace} {
+      flex: 1 0 auto;
+    }
   }
 }

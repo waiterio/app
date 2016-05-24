@@ -3,7 +3,7 @@
 input, textarea {
   margin-bottom: 10px;
   padding: 7px 6px 6px;
-  width: 100%;
+  min-width: 280px;
   outline: none;
   border: 1px solid $secondaryGray;
   border-radius: $defaultBorderRadius;
@@ -16,11 +16,21 @@ input, textarea {
   &:hover, &:focus {
     border-color: darken($secondaryGray, 10%);
   }
+
+  &.full {
+    width: 100%;
+  }
+
+  &[type=color] {
+    padding: 0 2px;
+    min-width: 60px;
+  }
 }
 
 label {
-  // Well we are working with placeholders
-  display: none;
+  color: $primaryGray;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 textarea {

@@ -2,7 +2,7 @@
 
 .login {
   margin: 100px auto;
-  padding: 40px;
+  padding: 30px;
   max-width: 350px;
   border: 1px solid $secondaryGray;
   background-color: white;
@@ -14,7 +14,11 @@
     margin-left: auto;
   }
 
-  .button.primary {
+  .btn--primary {
     margin-top: 15px;
+  }
+  
+  label {
+    display: none;
   }
 }
