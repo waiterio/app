@@ -4,8 +4,9 @@ define([
         'marionette',
         'underscore',
         'handlebars',
+        'app',
         'text!templates/main.html'],
-    function ($, Backbone, Marionette, _, Handlebars, tpl) {
+    function ($, Backbone, Marionette, _, Handlebars, App, tpl) {
         var MainView = Marionette.LayoutView.extend({
             ui: {
                 "title": "#pageTitle",
@@ -13,9 +14,6 @@ define([
             },
             events: {
                 "click @ui.logout": "logout"
-            },
-            initialize: function() {
-                this.handleLogout();
             },
             handleLogout: function(show) {
                 if(show) {
@@ -26,13 +24,19 @@ define([
             },
             logout: function() {
                 event.preventDefault();
-                Backbone.OAuth2.revoke();
+                var t = this;
+                Backbone.OAuth2.revoke(function() {
+                    t.handleLogout(false);
+                });
             },
             changePageTitle: function(title) {
                 this.ui.title.html(polyglot.t(title));
             },
             regions: {
                 main: 'main'
+            },
+            onRender: function() {
+                this.handleLogout(false);
             },
             template: Handlebars.compile(tpl)
         });

@@ -294,7 +294,7 @@ define([
                  * @returns {void}
                  */
                 success: function (response) {
-                    typeof callback === 'function' && callback();
+                    typeof callback === 'function' && callback(response);
                     /*
                      * Extend response object with current time
                      */
@@ -399,7 +399,7 @@ define([
          *
          * @returns {void}
          */
-        revoke: function () {
+        revoke: function (callback) {
             // Store a reference to the object
             var self = this;
 
@@ -435,6 +435,8 @@ define([
                 success: function (response) {
                     self.clear();
                     self.trigger('revoke', response, this);
+
+                    typeof callback === 'function' && callback();
                 },
 
                 /**

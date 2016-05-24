@@ -16,67 +16,67 @@ define([
             return Handlebars.compile(rawTemplate);
         };
 
-        var App = new Backbone.Marionette.Application();
+        var App = Backbone.Marionette.Application.extend({
+            regions: {
+                app: "#app"
+            },
 
-        App.addRegions({
-            app: '#app'
-        });
+                start: function() {
+                    this.layout = new mainLayout();
+                    this.app.show(this.layout);
 
-        App.addInitializer(function(options) {
+                    var t = this;
 
-        });
+                    var settings = new SettingsModel();
+                    settings.fetch({
+                        success: function(model) {
+                            window.settings = model.toJSON();
 
-        App.on("start", function(){
-            this.layout = new mainLayout();
-            this.app.show(this.layout);
+                            accounting.settings.currency = model.get("geo").currency;
 
-            var settings = new SettingsModel();
-            settings.fetch({
-                success: function(model) {
-                    window.settings = model.toJSON();
-
-                    accounting.settings.currency = model.get("geo").currency;
-
-                    var language = new LanguageModel({code: model.get("geo").locale});
-                    language.fetch({
-                        success: function(phrases) {
-                            window.polyglot = new Polyglot({
-                                phrases: phrases.toJSON(),
-                                locale: model.get("geo").locale
-                            });
+                            var language = new LanguageModel({code: model.get("geo").locale});
+                            language.fetch({
+                                success: function(phrases) {
+                                    window.polyglot = new Polyglot({
+                                        phrases: phrases.toJSON(),
+                                        locale: model.get("geo").locale
+                                    });
 
 
 
-                            Backbone.OAuth2 = new BackboneOauth({
-                                accessUrl   : model.get('tech').url + '/auth/token',
-                                refreshUrl  : model.get('tech').url + '/auth/refresh',
-                                revokeUrl   : model.get('tech').url + '/auth/revoke'
-                            });
+                                    Backbone.OAuth2 = new BackboneOauth({
+                                        accessUrl   : model.get('tech').url + '/auth/token',
+                                        refreshUrl  : model.get('tech').url + '/auth/refresh',
+                                        revokeUrl   : model.get('tech').url + '/auth/revoke'
+                                    });
 
-
-                            if(!Backbone.OAuth2.isAuthenticated()) {
-                                window.location.hash = '#/login';
-                            } else {
-                                App.layout.handleLogout(true);
-                                $.ajaxSetup({
-                                    headers: {
-                                        'access-token': JSON.parse(window.localStorage.getItem("__oauth2")).access_token
-                                    },
-                                    error: function (jqXHR, textStatus, errorThrown) {
-                                        if (jqXHR.status == 401) {
-                                            window.location.hash.replace('#/login');
+                                    $.ajaxSetup({
+                                        error: function (jqXHR, textStatus, errorThrown) {
+                                            if (jqXHR.status == 401) {
+                                                window.location.hash.replace('#/login');
+                                            }
                                         }
-                                    }
-                                });
-                            }
+                                    });
 
-                            Backbone.history.start({root: "/"});
+                                    if(!Backbone.OAuth2.isAuthenticated()) {
+                                        window.location.hash = '#/login';
+                                    } else {
+                                        t.layout.handleLogout(true);
+                                        $.ajaxSetup({
+                                            headers: {
+                                                'access-token': Backbone.OAuth2.getAuthorizationHeader()
+                                            }
+                                        });
+                                    }
+
+                                    Backbone.history.start({root: "/"});
+                                }
+                            });
                         }
                     });
                 }
-            });
         });
 
-        return App;
+        return new App();
 
     });

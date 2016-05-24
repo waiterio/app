@@ -7,6 +7,7 @@
     "kitchen": {
       "order": "Kitchen Order"
     },
+    "login": "Login",
     "backend": {
       "start": "Admin",
       "dishes": "Admin - Dishes",
