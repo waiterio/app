@@ -11,7 +11,7 @@ html, body {
 
 input, textarea {
   margin-bottom: 10px;
-  padding: 7px 6px 6px;
+  padding: 5px 6px;
   min-width: 280px;
   outline: none;
   border: 1px solid #dbdbdb;
@@ -22,9 +22,10 @@ input, textarea {
   transition: border-color 150ms;
   -webkit-appearance: none; }
   input:hover, input:focus, textarea:hover, textarea:focus {
-    border-color: #c2c2c2; }
+    border-color: #a8a8a8; }
   input.full, textarea.full {
-    width: 100%; }
+    width: 100%;
+    min-width: 0; }
   input[type=color], textarea[type=color] {
     padding: 0 2px;
     min-width: 60px; }
@@ -45,7 +46,7 @@ textarea {
   font-weight: 700;
   text-align: center;
   text-decoration: none;
-  border: 2px solid #dbdbdb;
+  border: 1px solid #dbdbdb;
   border-radius: 3px;
   outline: none;
   cursor: pointer; }
@@ -92,9 +93,58 @@ textarea {
     .btn-group--justify .btn {
       flex: 1 0 auto; }
 
+.tabGroup {
+  font: 10pt arial, verdana;
+  max-width: 935px; }
+  .tabGroup > input[type="radio"] {
+    display: none; }
+  .tabGroup > div.tablabels {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px; }
+    .tabGroup > div.tablabels > label {
+      display: inline-block;
+      width: 100%;
+      font-size: 15px;
+      font-weight: 100;
+      padding: 15px 20px 15px 22px;
+      z-index: 32767; }
+      .tabGroup > div.tablabels > label:hover {
+        border-left: 2px solid #dbdbdb;
+        padding-left: 20px;
+        cursor: pointer; }
+  .tabGroup > div.tabcontent {
+    display: inline-block;
+    height: 400px; }
+    .tabGroup > div.tabcontent > div {
+      width: 100%;
+      display: none;
+      border-left: 1px solid #dbdbdb;
+      padding: 10px 10px;
+      height: 100%;
+      overflow: auto; }
+
+.tabGroup > input#rad1:checked ~ div.tablabels > label[for="rad1"],
+.tabGroup > input#rad2:checked ~ div.tablabels > label[for="rad2"],
+.tabGroup > input#rad3:checked ~ div.tablabels > label[for="rad3"] {
+  font-weight: 400;
+  border-left: 2px solid #5d5d5d;
+  padding-left: 20px;
+  position: relative; }
+
+.tabGroup > .tab1:checked ~ div.tabcontent > .tab1,
+.tabGroup > .tab2:checked ~ div.tabcontent > .tab2,
+.tabGroup > .tab3:checked ~ div.tabcontent > .tab3 {
+  display: inline-block; }
+
 #content {
-  float: right;
-  width: calc(100% - 200px); }
+  margin: 0 auto;
+  width: 100%;
+  max-width: 935px;
+  background: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  padding: 20px; }
 
 .dishes--item {
   background: #ffffff;
@@ -144,7 +194,7 @@ textarea {
 
 .backend.dishes--item {
   background: #ffffff;
-  width: calc(20% - 12px);
+  width: calc(25% - 12px);
   display: inline-block;
   cursor: pointer;
   vertical-align: top;
@@ -268,18 +318,22 @@ textarea {
     display: none; }
 
 .settings {
-  max-width: 720px;
+  max-width: 935px;
   margin: 0 auto;
   background: white;
   border: 1px solid #dbdbdb;
   border-radius: 3px;
-  padding: 20px; }
+  padding: 0; }
+  .settings .input-row:first-of-type {
+    margin-top: 20px; }
   .settings .input-row label {
-    width: 130px;
+    width: 120px;
     display: inline-block;
     text-align: right;
     margin-right: 10px; }
   .settings .input-row input {
     display: inline-block; }
+  .settings .input-row .btn {
+    margin-top: 30px; }
 
 /*# sourceMappingURL=main.css.map */

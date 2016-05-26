@@ -1,24 +1,31 @@
 @import "../common/settings";
 
 .settings {
-  max-width: 720px;
+  max-width: 935px;
   margin: 0 auto;
   background: white;
   border: 1px solid $secondaryGray;
   border-radius: $defaultBorderRadius;
-  padding: 20px;
-
+  padding: 0;
 
   .input-row {
+    &:first-of-type {
+      margin-top: 20px;
+    }
 
     label {
-      width: 130px;
+      width: 120px;
       display: inline-block;
       text-align: right;
       margin-right: 10px;
     }
+
     input {
       display: inline-block;
+    }
+
+    .btn {
+      margin-top: 30px;
     }
   }
 }

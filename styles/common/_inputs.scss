@@ -2,7 +2,7 @@
 
 input, textarea {
   margin-bottom: 10px;
-  padding: 7px 6px 6px;
+  padding: 5px 6px;
   min-width: 280px;
   outline: none;
   border: 1px solid $secondaryGray;
@@ -14,11 +14,12 @@ input, textarea {
   -webkit-appearance: none;
 
   &:hover, &:focus {
-    border-color: darken($secondaryGray, 10%);
+    border-color: darken($secondaryGray, 20%);
   }
 
   &.full {
     width: 100%;
+    min-width: 0;
   }
 
   &[type=color] {
