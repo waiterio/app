@@ -106,16 +106,15 @@ textarea {
       display: inline-block;
       width: 100%;
       font-size: 15px;
-      font-weight: 100;
-      padding: 15px 20px 15px 22px;
+      font-weight: 300;
+      padding: 15px 20px;
       z-index: 32767; }
       .tabGroup > div.tablabels > label:hover {
-        border-left: 2px solid #dbdbdb;
-        padding-left: 20px;
         cursor: pointer; }
   .tabGroup > div.tabcontent {
     display: inline-block;
-    height: 400px; }
+    height: 400px;
+    margin-left: -4px; }
     .tabGroup > div.tabcontent > div {
       width: 100%;
       display: none;
@@ -127,8 +126,7 @@ textarea {
 .tabGroup > input#rad1:checked ~ div.tablabels > label[for="rad1"],
 .tabGroup > input#rad2:checked ~ div.tablabels > label[for="rad2"],
 .tabGroup > input#rad3:checked ~ div.tablabels > label[for="rad3"] {
-  font-weight: 400;
-  border-left: 2px solid #5d5d5d;
+  background-color: #dbdbdb;
   padding-left: 20px;
   position: relative; }
 
