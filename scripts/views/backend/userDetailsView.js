@@ -7,30 +7,21 @@ define([
         'text!templates/backend/users/details.html'],
     function ($, Backbone, Marionette, _, Handlebars, tpl) {
         var UserDetailsView = Marionette.ItemView.extend({
-            initialize: function(opts) {
-                if(opts.removeBtn) {
-                    this.removeBtn = true;
-                } else {
-                    this.removeBtn = false;
-                }
-            },
             ui: {
-                "submit": "#submit",
+                "submit": "#saveUser",
                 "username": "[name='username']",
                 "password": "[name='password']",
                 "role": "[name='role']",
                 "email": "[name='email']",
                 "input": "input",
-                "remove": "#remove"
+                "remove": "#removeUser"
             },
             events: function() {
-                var e = {
-                    "click @ui.submit": "save"
-                };
-                if(this.removeBtn) {
-                    e["click @ui.remove"] = "remove";
+                var e = {}
+                e["click @ui.submit"] = "saveUser";
+                if(this.options.edit) {
+                    e["click @ui.remove"] = "removeUser";
                 }
-                console.log(e);
                 return e;
             },
             getUIdata: function() {
@@ -41,7 +32,7 @@ define([
                     email: this.ui.email.val()
                 }
             },
-            save: function() {
+            saveUser: function() {
                 var t = this;
                 this.model.save(this.getUIdata(), {
                     success: function(data) {
@@ -50,8 +41,9 @@ define([
                     }
                 });
             },
-            remove: function() {
+            removeUser: function() {
                 var t = this;
+                alert("asdasd");
                 this.model.destroy({
                     success: function(data) {
                         t.triggerMethod("user:deleted", data);
@@ -61,7 +53,7 @@ define([
             },
             templateHelpers: function() {
                 return {
-                    removeBtn: this.removeBtn
+                    edit: this.options.edit
                 }
             },
             template: Handlebars.compile(tpl)

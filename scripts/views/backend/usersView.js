@@ -51,7 +51,7 @@ define([
                     'views/backend/userDetailsView'
                 ], function(modalRegion, userDetailsView) {
                     modal = new modalRegion();
-                    var UserDetailsView = new userDetailsView({model: model, removeBtn: true});
+                    var UserDetailsView = new userDetailsView({model: model, edit: true});
                     modal.show(UserDetailsView);
                     UserDetailsView.on("user:deleted", function(data) {
                         t.collection.remove(data.get("id"));

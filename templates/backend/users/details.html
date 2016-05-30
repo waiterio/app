@@ -34,11 +34,15 @@
         </div>
         <div class="tableRow">
             <div class="tableCell">
-                <input value="Edit" type="submit" id="submit" class="btn btn--primary">
+                {{#if edit}}
+                <input value="Edit" type="submit" id="saveUser" class="btn btn--primary">
+                {{else}}
+                <input value="Save" type="submit" id="saveUser" class="btn btn--primary">
+                {{/if}}
             </div>
-            {{#if removeBtn}}
+            {{#if edit}}
             <div class="tableCell">
-                <button id="remove" class="btn btn--red">Remove</button>
+                <button id="removeUser" class="btn btn--red">Remove</button>
             </div>
             {{/if}}
         </div>
