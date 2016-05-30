@@ -108,7 +108,7 @@ define([
             access_token: null,
             refresh_token: null,
             token_type: null,
-            expires_in: null,
+            expires: null,
             scope: null,
             time: null
         };
@@ -122,6 +122,7 @@ define([
         if (options.autoRefresh) {
             var self = this;
             var triggerRefresh = function myself (auth) {
+
                 if (self.isAuthenticated()) {
                     if (self.expiresIn() < REFRESH_MAX_TIME) {
                         console.info('A new access-token/refresh-token has been requested.');
@@ -166,7 +167,7 @@ define([
 
             if (typeof this.state !== 'undefined' && this.state !== null) {
                 // Check if token has already expired
-                if (this.state.expires_in + this.state.time > time) {
+                if (this.state.expires + this.state.time > time) {
                     return true;
                 }
             }
@@ -184,7 +185,7 @@ define([
         expiresIn: function () {
             if (this.isAuthenticated()) {
                 var time = new Date().getTime();
-                return (this.state.time + this.state.expires_in) - time;
+                return (this.state.time + this.state.expires) - time;
             }
             return 0;
         },
@@ -196,9 +197,7 @@ define([
          */
         getAuthorizationHeader: function () {
             if (this.isAuthenticated()) {
-                return {
-                    'authorization': this.state.token_type + ' ' + this.state.access_token
-                };
+                return this.state.access_token;
             }
             throw 'Unauthorized, please use access() to authenticate first';
         },
@@ -301,10 +300,10 @@ define([
                     response.time = time;
 
                     /*TODO*/
-                    response.expires_in = time;
+                    response.expires = time;
 
                     // Cast expires_in to Int and multiply by 1000 to get ms
-                    response.expires_in = parseInt(response.expires_in) * 1000;
+                    response.expires = parseInt(response.expires) * 1000;
 
                     // Store to localStorage too(to avoid double authentication calls)
                     //self.save(response, response.expires_in - timediff);
@@ -373,7 +372,7 @@ define([
                     response.time = time;
 
                     // Cast expires_in to Int and multiply by 1000 to get ms
-                    response.expires_in = parseInt(response.expires_in) * 1000;
+                    response.expires = parseInt(response.expires) * 1000;
 
                     // Store to localStorage too(faster access)
                     //self.save(response, response.expires_in - timediff);

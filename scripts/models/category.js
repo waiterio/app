@@ -8,7 +8,7 @@ define([
             defaults: {
                 name: ""
             },
-            url: window.settings.tech.apiurl + '/categories'
+            urlRoot: window.settings.tech.apiurl + '/categories'
         });
 
         return OrderModel;

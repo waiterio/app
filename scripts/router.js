@@ -19,6 +19,7 @@ define([
                 "login": "login",
                 "backend": "backend",
                 "backend/dishes": "backendDishes",
+                "backend/users": "backendUsers",
                 "backend/settings": "backendSettings",
                 "*actions": "select"
             }

@@ -17,5 +17,7 @@
   "destroy": {
     "default": "Willst du das wirklich löschen?",
     "dish": "Willst du %{name} wirklich löschen?"
-  }
+  },
+  "edit": "Bearbeiten",
+  "add": "Hinzufügen"
 }

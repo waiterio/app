@@ -17,5 +17,7 @@
   "destroy": {
     "default": "Are you really like to delete it?",
     "dish": "Are you really like to delete %{name}?"
-  }
+  },
+  "edit": "Edit",
+  "add": "Add"
 }

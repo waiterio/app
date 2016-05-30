@@ -62,6 +62,16 @@ define([
                     App.layout.getRegion("main").show(View);
                 });
             },
+            backendUsers: function() {
+                App.layout.changePageTitle("title.backend.users");
+                require([
+                   "views/backend/usersView"
+                ], function(view) {
+                    var View = new view();
+
+                    App.layout.getRegion("main").show(View);
+                });
+            },
             backendDishes: function() {
                 App.layout.changePageTitle("title.backend.dishes");
                 require([

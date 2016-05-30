@@ -5,7 +5,7 @@ define([
         'underscore'],
     function($, Backbone, Marionette, _) {
         var OrderModel = Backbone.Model.extend({
-            url: window.settings.tech.apiurl + '/orders',
+            urlRoot: window.settings.tech.apiurl + '/orders',
             defaults: {
                 "tablenumber": 1,
                 "ordertimestamp": null,

@@ -8,7 +8,7 @@ define([
             initialize: function(options) {
                 this.code = options.code;
             },
-            url: function() {
+            urlRoot: function() {
                 return 'settings/lang/' + this.code + '.json';
             }
         });

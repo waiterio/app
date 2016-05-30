@@ -1,0 +1,22 @@
+@import "settings";
+
+.modal-bg {
+  background: rgba(0,0,0,0.7);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal {
+  background: #FFF;
+  border-radius: $defaultBorderRadius;
+  left: 50%;
+  min-width: 640px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 50%;
+}
