@@ -1,0 +1,60 @@
+@import "settings";
+.tabGroup {
+  font: 10pt arial, verdana;
+  max-width: 935px;
+
+  & > input[type="radio"] {
+    // hacky input hiding
+    display: none;
+  }
+
+  & > div.tablabels {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+
+    & > label {
+      display: inline-block;
+      width: 100%;
+      font-size: 15px;
+      font-weight: 100;
+      padding: 15px 20px 15px 22px;
+      z-index: 32767;
+
+      &:hover {
+        border-left: 2px solid $secondaryGray;
+        padding-left: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  & > div.tabcontent {
+    display: inline-block;
+    height: 400px;
+
+    & > div {
+      width: 100%;
+      display: none;
+      border-left: 1px solid $secondaryGray;
+      padding: 10px 10px;
+      height: 100%;
+      overflow: auto;
+    }
+  }
+}
+
+.tabGroup > input#rad1:checked ~ div.tablabels > label[for="rad1"],
+.tabGroup > input#rad2:checked ~ div.tablabels > label[for="rad2"],
+.tabGroup > input#rad3:checked ~ div.tablabels > label[for="rad3"] {
+  font-weight: 400;
+  border-left: 2px solid lighten($primaryGray, 20%);
+  padding-left: 20px;
+  position: relative;
+}
+
+.tabGroup > .tab1:checked ~ div.tabcontent > .tab1,
+.tabGroup > .tab2:checked ~ div.tabcontent > .tab2,
+.tabGroup > .tab3:checked ~ div.tabcontent > .tab3 {
+  display: inline-block;
+}

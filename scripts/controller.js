@@ -84,7 +84,6 @@ define([
             },
             login: function() {
                 if(!Backbone.OAuth2.isAuthenticated()) {
-                    App.layout.changePageTitle("title.login");
                     require([
                         "views/loginView"
                     ], function (view) {

@@ -1,15 +1,55 @@
-<h4>Tech-Things</h4>
-<label for="apiuri">API URI:</label>
-<input type="text" name="apiuri" value="{{ tech.apiurl }}">
-<h4>Company</h4>
-<label for="name">Name:</label>
-<input type="text" name="name" value="{{ company.name }}"><br>
-<label for="color">CI Color:</label>
-<input type="color" name="color" value="{{ company.color }}">
-<h4>Geo</h4>
-<label for="locale">Country Code:</label>
-<input type="text" name="locale" value="{{ geo.locale }}"><br>
-<label for="currency">Currency:</label>
-<input type="text" name="currency" value="{{ geo.currency.symbol }}"><br>
+<div class="settings">
+	<div class="settings-content">
+		<div class="tabGroup">
+			<input type="radio" name="tabGroup1" id="rad1" class="tab1" checked="checked"/>
+			<input type="radio" name="tabGroup1" id="rad2" class="tab2"/>
+			<input type="radio" name="tabGroup1" id="rad3" class="tab3"/>
 
-<input type="submit" value="Einstellungen speichern">
+			<div class="tablabels">
+				<label for="rad1">company</label>
+				<label for="rad2">localisation</label>
+				<label for="rad3">administration</label>
+			</div>
+			<div class="tabcontent">
+				<div class="tab1">
+					<div class="input-row">
+						<label for="name">restaurant name</label>
+						<input type="text" name="name" id="name" value="{{ company.name }}">
+					</div>
+					<div class="input-row">
+						<label for="color">corporate color</label>
+						<input type="color" name="color" id="color" value="{{ company.color }}">
+					</div>
+					<div class="input-row">
+						<label></label>
+						<button class="btn btn--secondary" type="submit">Save</button>
+					</div>
+				</div>
+				<div class="tab2">
+					<div class="input-row">
+						<label for="locale">country code</label>
+						<input type="text" name="locale" id="locale" value="{{ geo.locale }}"><br>
+					</div>
+					<div class="input-row">
+						<label for="currency">currency symbol</label>
+						<input type="text" name="currency" id="currency" value="{{ geo.currency.symbol }}"><br>
+					</div>
+					<div class="input-row">
+						<label></label>
+						<button class="btn btn--secondary" type="submit">Save</button>
+					</div>
+				</div>
+				<div class="tab3">
+					<div class="input-row">
+						<label for="apiuri">api root url</label>
+						<input type="text" name="apiuri" id="apiuri" value="{{ tech.apiurl }}">
+					</div>
+					<div class="input-row">
+						<label></label>
+						<button class="btn btn--secondary" type="submit">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

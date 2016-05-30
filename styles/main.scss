@@ -1,9 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Ubuntu);
-
 @import "common/base";
 @import "common/inputs";
-@import "common/table";
-@import "common/modal";
-
+@import "common/buttons";
+@import "common/tabs";
 @import "dishes/item";
+@import "orders/list";
+@import "login/login";
+@import "backend/systemsettings";
 @import "orders/list";
