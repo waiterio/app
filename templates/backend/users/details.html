@@ -1,50 +1,48 @@
-<div class="modal">
-    <div class="table">
-        <div class="tableRow">
-            <div class="tableCell">
-                <label for="username">Username: </label>
-            </div>
-            <div class="tableCell">
-                <input placeholder="Username" type="text" id="username" name="username" value="{{ username }}">
-            </div>
+<div class="table">
+    <div class="tableRow">
+        <div class="tableCell">
+            <label for="username">Username: </label>
         </div>
-        <div class="tableRow">
-            <div class="tableCell">
-                <label for="password">Password: </label>
-            </div>
-            <div class="tableCell">
-                <input placeholder="Password" type="password" id="password" name="password">
-            </div>
+        <div class="tableCell">
+            <input placeholder="Username" type="text" id="username" name="username" value="{{ username }}">
         </div>
-        <div class="tableRow">
-            <div class="tableCell">
-                <label for="role">Role: </label>
-            </div>
-            <div class="tableCell">
-                <input placeholder="Role" type="text" id="role" name="role" value="{{ role }}">
-            </div>
+    </div>
+    <div class="tableRow">
+        <div class="tableCell">
+            <label for="password">Password: </label>
         </div>
-        <div class="tableRow">
-            <div class="tableCell">
-                <label for="email">Email: </label>
-            </div>
-            <div class="tableCell">
-                <input placeholder="Email" type="email" id="email" name="email" value="{{ email }}">
-            </div>
+        <div class="tableCell">
+            <input placeholder="Password" type="password" id="password" name="password">
         </div>
-        <div class="tableRow">
-            <div class="tableCell">
-                {{#if edit}}
-                <input value="Edit" type="submit" id="saveUser" class="btn btn--primary">
-                {{else}}
-                <input value="Save" type="submit" id="saveUser" class="btn btn--primary">
-                {{/if}}
-            </div>
+    </div>
+    <div class="tableRow">
+        <div class="tableCell">
+            <label for="role">Role: </label>
+        </div>
+        <div class="tableCell">
+            <input placeholder="Role" type="text" id="role" name="role" value="{{ role }}">
+        </div>
+    </div>
+    <div class="tableRow">
+        <div class="tableCell">
+            <label for="email">Email: </label>
+        </div>
+        <div class="tableCell">
+            <input placeholder="Email" type="email" id="email" name="email" value="{{ email }}">
+        </div>
+    </div>
+    <div class="tableRow">
+        <div class="tableCell">
             {{#if edit}}
-            <div class="tableCell">
-                <button id="removeUser" class="btn btn--red">Remove</button>
-            </div>
+            <input value="Edit" type="submit" id="saveUser" class="btn btn--primary">
+            {{else}}
+            <input value="Save" type="submit" id="saveUser" class="btn btn--primary">
             {{/if}}
         </div>
+        {{#if edit}}
+        <div class="tableCell">
+            <button id="removeUser" class="btn btn--red">Remove</button>
+        </div>
+        {{/if}}
     </div>
 </div>
