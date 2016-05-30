@@ -68,13 +68,13 @@ $button-border-red: $primaryRed;
     background: $button-background-secondary;
 
     &:hover:not(:disabled), &:active:not(:disabled) {
-      background: lighten($button-background-secondary, 7%);
-      border-color: lighten($button-border-secondary, 7%);
+      color: lighten($button-color-secondary, 22%);
+      border-color: lighten($button-border-secondary, 22%);
     }
   }
 
   &#{&}--tertiary {
-    color: $button-color-tertiary;
+    color: lighten($button-color-tertiary, 15%);
     border-color: $button-border-tertiary;
     background: $button-background-tertiary;
 

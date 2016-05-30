@@ -79,10 +79,10 @@ textarea {
     border-color: #4d5a9e;
     background: transparent; }
     .btn.btn--secondary:hover:not(:disabled), .btn.btn--secondary:active:not(:disabled) {
-      background: rgba(18, 18, 18, 0);
-      border-color: #5e6bb1; }
+      color: #929bca;
+      border-color: #929bca; }
   .btn.btn--tertiary {
-    color: #2a2a2a;
+    color: #505050;
     border-color: #dbdbdb;
     background: #dbdbdb; }
     .btn.btn--tertiary:hover:not(:disabled) {
@@ -166,7 +166,8 @@ textarea {
       font-weight: 700; }
     .table .tableRow .tableCell {
       display: table-cell;
-      padding: 5px 10px;
+      font-size: 90%;
+      padding: 4px 10px;
       border-bottom: 1px solid #dbdbdb; }
 
 .modal-bg {
@@ -181,12 +182,24 @@ textarea {
   background: #FFF;
   border-radius: 3px;
   left: 50%;
-  min-width: 640px;
-  padding: 20px;
+  max-width: 470px;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 50%; }
+  .modal .modal-title {
+    padding: 8px;
+    margin: 0 0 12px;
+    font-size: 18px;
+    text-align: center;
+    background: #dbdbdb;
+    font-weight: 400; }
+  .modal .modal-buttons {
+    text-align: right;
+    background: #dbdbdb;
+    padding: 7px; }
+  .modal .modal-content {
+    margin: 5px 0; }
 
 .login {
   margin: 100px auto;
@@ -446,3 +459,15 @@ textarea {
     display: inline-block; }
   .settings .input-row .btn {
     margin-top: 30px; }
+
+.user-details label {
+  width: 120px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px; }
+
+.addRow {
+  width: 100%;
+  margin: 10px 5px; }
+
+/*# sourceMappingURL=main.css.map */
