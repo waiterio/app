@@ -10,6 +10,14 @@ $button-color-secondary: $accentColor;
 $button-background-secondary: transparent;
 $button-border-secondary: $accentColor;
 
+$button-color-tertiary: $primaryGray;
+$button-background-tertiary: $secondaryGray;
+$button-border-tertiary: $secondaryGray;
+
+$button-color-red: white;
+$button-background-red: $primaryRed;
+$button-border-red: $primaryRed;
+
 .#{$button-namespace} {
   display: inline-block;
   padding: 5px 12px;
@@ -46,10 +54,10 @@ $button-border-secondary: $accentColor;
   &#{&}--primary {
     color: $button-color-primary;
     border-color: $button-border-primary;
-    background-color: $button-background-primary;
+    background: $button-background-primary;
 
     &:hover:not(:disabled), &:active:not(:disabled) {
-      background-color: lighten($button-background-primary, 7%);
+      background: lighten($button-background-primary, 7%);
       border-color: lighten($button-background-primary, 7%);
     }
   }
@@ -60,25 +68,32 @@ $button-border-secondary: $accentColor;
     background: $button-background-secondary;
 
     &:hover:not(:disabled), &:active:not(:disabled) {
-      background-color: lighten($button-background-secondary, 7%);
+      background: lighten($button-background-secondary, 7%);
       border-color: lighten($button-border-secondary, 7%);
     }
   }
 
-  //&#{&}--tertiary {
-  //  color: $DBbutton-text-tertiary;
-  //  border-color: $DBbutton-border-tertiary;
-  //  background-color: $DBbutton-background-fallback-tertiary;
-  //  background: $DBbutton-background-tertiary;
-  //
-  //  &:hover:not(:disabled) {
-  //    background: $DBbutton-background-tertiary-hover;
-  //  }
-  //
-  //  &:active:not(:disabled) {
-  //    background: $DBbutton-background-tertiary-active;
-  //  }
-  //}
+  &#{&}--tertiary {
+    color: $button-color-tertiary;
+    border-color: $button-border-tertiary;
+    background: $button-background-tertiary;
+
+    &:hover:not(:disabled) {
+      background: lighten($button-background-tertiary, 5%);
+      border-color: lighten($button-border-tertiary, 5%);
+    }
+  }
+
+  &#{&}--red {
+    color: $button-color-red;
+    border-color: $button-border-red;
+    background: $button-background-red;
+
+    &:hover:not(:disabled) {
+      background: lighten($button-background-red, 5%);
+      border-color: lighten($button-border-red, 5%);
+    }
+  }
 }
 
 .#{$button-namespace}-group {

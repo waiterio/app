@@ -63,17 +63,31 @@ textarea {
   .btn.btn--primary {
     color: white;
     border-color: #33cc33;
-    background-color: #33cc33; }
+    background: #33cc33; }
     .btn.btn--primary:hover:not(:disabled), .btn.btn--primary:active:not(:disabled) {
-      background-color: #50d350;
+      background: #50d350;
       border-color: #50d350; }
   .btn.btn--secondary {
     color: #33cc33;
     border-color: #33cc33;
     background: transparent; }
     .btn.btn--secondary:hover:not(:disabled), .btn.btn--secondary:active:not(:disabled) {
-      background-color: rgba(18, 18, 18, 0);
+      background: rgba(18, 18, 18, 0);
       border-color: #50d350; }
+  .btn.btn--tertiary {
+    color: #2a2a2a;
+    border-color: #dbdbdb;
+    background: #dbdbdb; }
+    .btn.btn--tertiary:hover:not(:disabled) {
+      background: #e8e8e8;
+      border-color: #e8e8e8; }
+  .btn.btn--red {
+    color: white;
+    border-color: #cc3333;
+    background: #cc3333; }
+    .btn.btn--red:hover:not(:disabled) {
+      background: #d14747;
+      border-color: #d14747; }
 
 .btn-group {
   display: flex; }
@@ -145,6 +159,25 @@ textarea {
 .tableCell {
   display: table-cell;
   padding: 5px 10px; }
+
+.modal-bg {
+  background: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%; }
+
+.modal {
+  background: #FFF;
+  border-radius: 3px;
+  left: 50%;
+  min-width: 640px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%; }
 
 .login {
   margin: 100px auto;
