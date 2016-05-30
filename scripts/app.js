@@ -8,23 +8,20 @@ define([
         'polyglot',
         'models/settings',
         'models/language',
-        'accounting',
-        'views/mainLayout'
+        'accounting'
     ],
-    function ($, _, Backbone, BackboneOauth, Marionette, Handlebars, Polyglot, SettingsModel, LanguageModel, accounting, mainLayout) {
+    function ($, _, Backbone, BackboneOauth, Marionette, Handlebars, Polyglot, SettingsModel, LanguageModel, accounting) {
         Backbone.Marionette.TemplateCache.prototype.compileTemplate = function(rawTemplate) {
             return Handlebars.compile(rawTemplate);
         };
 
-        var App = Backbone.Marionette.Application.extend({
+        var App = new Backbone.Marionette.Application({
             regions: {
                 app: "#app"
-            },
+            }
+        });
 
-                start: function() {
-                    this.layout = new mainLayout();
-                    this.app.show(this.layout);
-
+        App.on("start", function() {
                     var t = this;
 
                     var settings = new SettingsModel();
@@ -61,7 +58,6 @@ define([
                                     if(!Backbone.OAuth2.isAuthenticated()) {
                                         window.location.hash = '#/login';
                                     } else {
-                                        t.layout.handleLogout(true);
                                         $.ajaxSetup({
                                             headers: {
                                                 'access-token': Backbone.OAuth2.getAuthorizationHeader()
@@ -74,9 +70,18 @@ define([
                             });
                         }
                     });
-                }
         });
 
-        return new App();
+        App.vent.on("changePage", function(title, view, layout) {
+            var layout = new layout();
+            console.log(layout);
+            App.getRegion("app").show(layout);
+
+            layout.getRegion("main").show(new view());
+
+            layout.changePageTitle(title);
+        });
+
+        return App;
 
     });

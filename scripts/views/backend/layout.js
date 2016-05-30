@@ -5,9 +5,9 @@ define([
         'underscore',
         'handlebars',
         'app',
-        'text!templates/main.html'],
+        'text!templates/backend/main.html'],
     function ($, Backbone, Marionette, _, Handlebars, App, tpl) {
-        var MainView = Marionette.LayoutView.extend({
+        var BackendLayoutView = Marionette.LayoutView.extend({
             ui: {
                 "title": "#pageTitle",
                 "logout": "#logout"
@@ -36,10 +36,14 @@ define([
                 main: 'main'
             },
             onRender: function() {
-                this.handleLogout(false);
+                if(Backbone.OAuth2.isAuthenticated()) {
+                    this.handleLogout(true);
+                } else {
+                    this.handleLogout(false);
+                }
             },
             template: Handlebars.compile(tpl)
         });
 
-        return MainView;
+        return BackendLayoutView;
     });

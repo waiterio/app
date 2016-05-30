@@ -43,7 +43,6 @@ define([
             },
             removeUser: function() {
                 var t = this;
-                alert("asdasd");
                 this.model.destroy({
                     success: function(data) {
                         t.triggerMethod("user:deleted", data);

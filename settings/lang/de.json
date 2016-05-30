@@ -11,7 +11,8 @@
     "backend": {
       "start": "Admin",
       "dishes": "Admin - Speisen",
-      "settings": "Admin - Konfiguration"
+      "settings": "Admin - Konfiguration",
+      "users": "Admin - Users"
     }
   },
   "destroy": {
