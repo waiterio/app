@@ -13,10 +13,29 @@
   background: #FFF;
   border-radius: $defaultBorderRadius;
   left: 50%;
-  min-width: 640px;
-  padding: 20px;
+  max-width: 470px;
   position: absolute;
   top: 50%;
   transform: translate(-50%,-50%);
   width: 50%;
+
+  .modal-title {
+    padding: 8px;
+    margin: 0 0 12px;
+    font-size: 18px;
+    text-align: center;
+    //border-bottom: 1px solid $secondaryGray;
+    background: $secondaryGray;
+    font-weight: 400;
+  }
+
+  .modal-buttons {
+    text-align: right;
+    background: $secondaryGray;
+    padding: 7px;
+  }
+
+  .modal-content {
+    margin: 5px 0;
+  }
 }
