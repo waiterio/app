@@ -20,7 +20,6 @@ define([
                 event.preventDefault();
                 Backbone.OAuth2.access(this.ui.username.val(), this.ui.password.val(), function(data) {
                     App.Router.navigate("#/backend");
-                    App.layout.handleLogout(true);
                     $.ajaxSetup({
                         headers: {
                             'access-token': data.access_token
