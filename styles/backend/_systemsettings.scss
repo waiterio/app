@@ -1,11 +1,6 @@
 @import "../common/settings";
 
 .settings {
-  max-width: 935px;
-  margin: 0 auto;
-  background: white;
-  border: 1px solid $secondaryGray;
-  border-radius: $defaultBorderRadius;
   padding: 0;
 
   .input-row {

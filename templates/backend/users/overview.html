@@ -1,5 +1,5 @@
 <div class="table">
-    <div class="tableRow">
+    <div class="tableRow tableHeader">
         <div class="tableCell">
             Username
         </div>
@@ -9,6 +9,7 @@
         <div class="tableCell">
             Email
         </div>
+        <div class="tableCell" style="width: 110px;"></div>
     </div>
     {{#each items}}
     <div class="tableRow" data-id="{{id}}">
@@ -21,8 +22,10 @@
         <div class="tableCell">
             {{ email }}
         </div>
-        <div class="tableCell edit btn btn--tertiary">
-            {{ ../edit }}
+        <div class="tableCell edit">
+            <div class="btn btn--secondary">
+                {{ ../edit }}
+            </div>
         </div>
     </div>
     {{/each}}
