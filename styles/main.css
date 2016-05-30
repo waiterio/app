@@ -79,10 +79,10 @@ textarea {
     border-color: #4d5a9e;
     background: transparent; }
     .btn.btn--secondary:hover:not(:disabled), .btn.btn--secondary:active:not(:disabled) {
-      background: rgba(18, 18, 18, 0);
-      border-color: #5e6bb1; }
+      color: #929bca;
+      border-color: #929bca; }
   .btn.btn--tertiary {
-    color: #2a2a2a;
+    color: #505050;
     border-color: #dbdbdb;
     background: #dbdbdb; }
     .btn.btn--tertiary:hover:not(:disabled) {
@@ -166,7 +166,8 @@ textarea {
       font-weight: 700; }
     .table .tableRow .tableCell {
       display: table-cell;
-      padding: 5px 10px;
+      font-size: 90%;
+      padding: 4px 10px;
       border-bottom: 1px solid #dbdbdb; }
 
 .modal-bg {
@@ -464,5 +465,9 @@ textarea {
   display: inline-block;
   text-align: right;
   margin-right: 10px; }
+
+.addRow {
+  width: 100%;
+  margin: 10px 5px; }
 
 /*# sourceMappingURL=main.css.map */

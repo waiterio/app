@@ -1,33 +1,35 @@
 <div class="table">
-    <div class="tableRow tableHeader">
-        <div class="tableCell">
-            Username
-        </div>
-        <div class="tableCell">
-            Role
-        </div>
-        <div class="tableCell">
-            Email
-        </div>
-        <div class="tableCell" style="width: 110px;"></div>
-    </div>
-    {{#each items}}
-    <div class="tableRow" data-id="{{id}}">
-        <div class="tableCell">
-            {{ username }}
-        </div>
-        <div class="tableCell">
-            {{ role }}
-        </div>
-        <div class="tableCell">
-            {{ email }}
-        </div>
-        <div class="tableCell edit">
-            <div class="btn btn--secondary">
-                {{ ../edit }}
-            </div>
-        </div>
-    </div>
-    {{/each}}
-    <div class="add btn btn--primary">{{ add }}</div>
+	<div class="tableRow tableHeader">
+		<div class="tableCell">
+			Username
+		</div>
+		<div class="tableCell">
+			Role
+		</div>
+		<div class="tableCell">
+			Email
+		</div>
+		<div class="tableCell" style="width: 110px;"></div>
+	</div>
+	{{#each items}}
+	<div class="tableRow" data-id="{{id}}">
+		<div class="tableCell">
+			{{ username }}
+		</div>
+		<div class="tableCell">
+			{{ role }}
+		</div>
+		<div class="tableCell">
+			{{ email }}
+		</div>
+		<div class="tableCell edit">
+			<div class="btn btn--secondary">
+				{{ ../edit }}
+			</div>
+		</div>
+	</div>
+	{{/each}}
+	<div class="addRow">
+		<button class="add btn btn--primary">{{ add }}</button>
+	</div>
 </div>
