@@ -4,7 +4,6 @@ header {
   clear: both;
   padding-left: 10px;
   padding-right: 10px;
-  border-bottom: 1px solid $secondaryGray;
   background: $accentColor;
   color: white;
   height: 36px;
@@ -14,11 +13,10 @@ header {
   top: 0;
 
   h1 {
-    margin-top: 0;
-    font-size: 18px;
-    line-height: 32px;
+    margin: 0;
+    font-size: 17px;
+    line-height: 34px;
     font-weight: 400;
-    text-transform: lowercase;
     display: inline-block;
   }
 

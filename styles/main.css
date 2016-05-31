@@ -7,14 +7,13 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: #fafafa; }
-  html main, body main {
-    margin: 36px auto 0;
+  background-color: white; }
+  html main.backend, body main.backend {
     padding: 20px;
-    background: white;
-    border-bottom: 1px solid #dbdbdb; }
-    html main.backend, body main.backend {
-      margin-left: 200px; }
+    margin: 36px auto 0 200px; }
+  html main.frontend, body main.frontend {
+    padding: 20px;
+    margin: 36px auto 0; }
 
 input, textarea {
   margin-bottom: 10px;
@@ -22,7 +21,7 @@ input, textarea {
   min-width: 280px;
   outline: none;
   border: 1px solid #dbdbdb;
-  border-radius: 3px;
+  border-radius: 0px;
   color: #2a2a2a;
   font-weight: 400;
   font-size: 13px;
@@ -54,7 +53,7 @@ textarea {
   text-align: center;
   text-decoration: none;
   border: 1px solid #dbdbdb;
-  border-radius: 3px;
+  border-radius: 0px;
   outline: none;
   cursor: pointer; }
   .btn[disabled], .btn.btn--disabled {
@@ -69,18 +68,18 @@ textarea {
     width: 100%; }
   .btn.btn--primary {
     color: white;
-    border-color: #4d5a9e;
-    background: #4d5a9e; }
+    border-color: #194996;
+    background: #194996; }
     .btn.btn--primary:hover:not(:disabled), .btn.btn--primary:active:not(:disabled) {
-      background: #5e6bb1;
-      border-color: #5e6bb1; }
+      background: #1e58b5;
+      border-color: #1e58b5; }
   .btn.btn--secondary {
-    color: #4d5a9e;
-    border-color: #4d5a9e;
+    color: #194996;
+    border-color: #194996;
     background: transparent; }
     .btn.btn--secondary:hover:not(:disabled), .btn.btn--secondary:active:not(:disabled) {
-      color: #929bca;
-      border-color: #929bca; }
+      color: #407ddf;
+      border-color: #407ddf; }
   .btn.btn--tertiary {
     color: #505050;
     border-color: #dbdbdb;
@@ -104,8 +103,8 @@ textarea {
     .btn-group .btn + .btn {
       border-left: 0; }
     .btn-group .btn:first-child {
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px; }
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px; }
     .btn-group .btn:last-child {
       border-top-right-radius: 3px;
       border-bottom-right-radius: 3px; }
@@ -158,15 +157,23 @@ textarea {
 
 .table {
   display: table;
-  width: 100%; }
+  width: 100%;
+  border-top: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  border-left: 1px solid #dbdbdb; }
   .table .tableRow {
     display: table-row; }
+    .table .tableRow:hover {
+      background: #ededed;
+      cursor: pointer; }
     .table .tableRow.tableHeader {
       background: #dbdbdb;
-      font-weight: 700; }
+      font-weight: 600;
+      height: 32px; }
     .table .tableRow .tableCell {
       display: table-cell;
       font-size: 90%;
+      vertical-align: middle;
       padding: 4px 10px;
       border-bottom: 1px solid #dbdbdb; }
 
@@ -180,7 +187,7 @@ textarea {
 
 .modal {
   background: #FFF;
-  border-radius: 3px;
+  border-radius: 0px;
   left: 50%;
   max-width: 470px;
   position: absolute;
@@ -241,45 +248,55 @@ nav.sidebar {
   .login label {
     display: none; }
 
-#content {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 935px;
-  background: white;
-  border: 1px solid #dbdbdb;
-  border-radius: 3px;
-  padding: 20px; }
-
 .dishes--item {
-  background: #ffffff;
-  width: 100%;
+  background: white;
+  width: 220px;
   cursor: pointer;
-  margin: 15px 0;
-  padding: 5px; }
+  margin: 15px;
+  display: inline-block;
+  vertical-align: top;
+  height: 230px;
+  border: 1px solid #dbdbdb;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 3px; }
   .dishes--item img {
-    width: 150px;
-    height: auto; }
-  .dishes--item .infos {
+    width: 220px;
+    max-height: 130px; }
+  .dishes--item .info {
     display: inline-block;
-    width: calc(100% - 160px);
-    vertical-align: top; }
+    vertical-align: top;
+    width: 100%; }
   .dishes--item .title {
-    padding: 0px 10px 0 10px;
-    font-size: 16px;
+    padding: 0 10px 0 10px;
+    font-size: 15px;
+    font-weight: 600;
     text-transform: uppercase;
-    margin: 0; }
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+    height: 20px; }
   .dishes--item .description, .dishes--item .price {
     margin: 0;
-    padding: 10px; }
+    height: 40px;
+    overflow: hidden;
+    white-space: pre-line;
+    text-overflow: ellipsis;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 13px;
+    color: #444444; }
   .dishes--item .price {
-    float: right;
-    padding-right: 35px; }
+    height: 30px;
+    display: block;
+    font-weight: 600;
+    text-align: center; }
 
 .category h3 {
   display: inline-block;
-  font-weight: 200;
-  margin-bottom: 5px;
-  border-bottom: 1px solid; }
+  font-weight: 600;
+  margin: 0 0 5px;
+  text-transform: uppercase; }
 
 #categorylinks {
   width: 200px;
@@ -298,7 +315,7 @@ nav.sidebar {
 
 .backend.dishes--item {
   background: #ffffff;
-  width: calc(25% - 12px);
+  width: calc(20% - 12px);
   display: inline-block;
   cursor: pointer;
   vertical-align: top;
@@ -442,22 +459,23 @@ nav.sidebar {
   .settings .input-row .btn {
     margin-top: 30px; }
 
-.user-details label {
-  width: 120px;
-  display: inline-block;
-  text-align: right;
-  margin-right: 10px; }
+.user-details {
+  max-width: 400px; }
+  .user-details label {
+    width: 120px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px; }
 
 .addRow {
   width: 100%;
-  margin: 10px 5px; }
+  margin-top: 15px; }
 
 header {
   clear: both;
   padding-left: 10px;
   padding-right: 10px;
-  border-bottom: 1px solid #dbdbdb;
-  background: #4d5a9e;
+  background: #194996;
   color: white;
   height: 36px;
   margin-bottom: 20px;
@@ -465,15 +483,14 @@ header {
   width: 100%;
   top: 0; }
   header h1 {
-    margin-top: 0;
-    font-size: 18px;
-    line-height: 32px;
+    margin: 0;
+    font-size: 17px;
+    line-height: 34px;
     font-weight: 400;
-    text-transform: lowercase;
     display: inline-block; }
   header .logout-button {
     float: right;
-    color: #adb4d7;
+    color: #6395e5;
     vertical-align: middle;
     line-height: 36px; }
     header .logout-button:hover {
@@ -509,7 +526,7 @@ header {
     display: inline-block;
     margin: 0 0 0 5px; }
   .order__list--item .table-number {
-    background: #4d5a9e;
+    background: #194996;
     border-radius: 50%;
     color: #ffffff;
     display: inline-block;

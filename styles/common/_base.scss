@@ -12,13 +12,14 @@ html, body {
   background-color: $backgroundColor;
 
   main {
-    margin: 36px auto 0;
-    padding: 20px;
-    background: white;
-    border-bottom: 1px solid $secondaryGray;
-
     &.backend {
-      margin-left: 200px;
+      padding: 20px;
+      margin: 36px auto 0 200px;
+    }
+
+    &.frontend {
+      padding: 20px;
+      margin: 36px auto 0;
     }
   }
 }

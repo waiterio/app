@@ -3,18 +3,28 @@
 .table {
   display: table;
   width: 100%;
+  border-top: 1px solid $secondaryGray;
+  border-right: 1px solid $secondaryGray;
+  border-left: 1px solid $secondaryGray;
 
   .tableRow {
     display: table-row;
 
+    &:hover {
+      background: lighten($secondaryGray, 7%);
+      cursor: pointer;
+    }
+
     &.tableHeader {
       background: $secondaryGray;
-      font-weight: 700;
+      font-weight: 600;
+      height: 32px;
     }
 
     .tableCell {
       display: table-cell;
       font-size: 90%;
+      vertical-align: middle;
       padding: 4px 10px;
       border-bottom: 1px solid $secondaryGray;
     }
