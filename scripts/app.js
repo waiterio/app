@@ -73,13 +73,18 @@ define([
         });
 
         App.vent.on("changePage", function(title, view, layout) {
-            var layout = new layout();
-            console.log(layout);
-            App.getRegion("app").show(layout);
+            var isBackend = window.location.hash.indexOf("backend") > -1;
 
-            layout.getRegion("main").show(new view());
+            if(isBackend && !Backbone.OAuth2.isAuthenticated()) {
+                window.location.hash = "#/login";
+            } else {
+                var layout = new layout();
+                App.getRegion("app").show(layout);
 
-            layout.changePageTitle(title);
+                layout.getRegion("main").show(new view());
+
+                layout.changePageTitle(title);
+            }
         });
 
         return App;
