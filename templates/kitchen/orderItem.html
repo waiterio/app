@@ -1,10 +1,15 @@
-<span class="nr">{{ id }}</span>
-<div class="tablenumber">{{ tablenumber }}</div>
-<p class="ordertimestamp">{{ fordertimestamp }}</p>
-<span class="price">{{ price }}</span>
+<div class="order-description">
+<span class="table-number">{{ tablenumber }}</span>
+<p class="order-timestamp">{{ fordertimestamp }}</p>
+<span class="item-id">[#{{ id }}]</span>
+
 {{#each orderitems}}
-    <div class="order__list--item--dishes">
-        <span class="nr">{{ dishes_id }}</span>
-        <h2 class="name">{{ name }}</h2>
-    </div>
+<div class="order__list--item--dishes">
+	<div class="name">{{ name }}</div>
+	<span class="item-id">[#{{ dishes_id }}]</span>
+</div>
 {{/each}}
+</div>
+<div class="actions">
+	<div class="done">&#10004;</div>
+</div>

@@ -1,14 +1,16 @@
 // colors
-$backgroundColor: rgb(250, 250, 250);
+$backgroundColor: rgb(250, 250, 250) !default;
 
-$primaryGray: rgb(42, 42, 42);
-$secondaryGray: rgb(219, 219, 219);
+$primaryGray: rgb(42, 42, 42) !default;
+$secondaryGray: rgb(219, 219, 219) !default;
 
-$primaryRed: rgb(204, 51, 51);
-$accentColor: rgb(77, 90, 158);
+$primaryRed: rgb(204, 51, 51) !default;
+$accentColor: rgb(77, 90, 158) !default;
+$defaultConfirmColor: rgb(51, 153, 102) !default;
+
 
 // fonts
-$defaultFontFamily: 'Open Sans', sans-serif;
+$defaultFontFamily: 'Open Sans', sans-serif !default;
 
 // misc
 $defaultBorderRadius: 3px;

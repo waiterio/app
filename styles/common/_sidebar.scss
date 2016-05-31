@@ -1,0 +1,39 @@
+@import "../common/settings";
+
+nav.sidebar {
+  background: lighten($secondaryGray, 4%);
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 36px;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+      $activeBackground: darken($secondaryGray, 7%);
+
+      line-height: 32px;
+      font-weight: 400;
+      font-size: 90%;
+
+      &:hover {
+        cursor: pointer;
+        background: $activeBackground;
+      }
+
+      &.active {
+        font-weight: 600;
+        background: $activeBackground;
+      }
+
+      a {
+        padding-left: 15px;
+        text-decoration: none;
+        display: block;
+        color: $primaryGray;
+      }
+    }
+  }
+}

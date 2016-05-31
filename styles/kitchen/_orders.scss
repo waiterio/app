@@ -1,0 +1,72 @@
+@import "../common/settings";
+
+.order__list--item {
+  border: 1px solid $secondaryGray;
+  margin: 5px;
+  clear: both;
+
+  .order-description {
+    padding: 10px;
+    width: 85%;
+    display: inline-block;
+  }
+
+  .actions {
+    float: right;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 10px;
+
+    .done {
+      color: white;
+      background: $defaultConfirmColor;
+      width: 35px;
+      font-size: 24px;
+
+      &:hover {
+        background: lighten($defaultConfirmColor, 10%);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .item-id {
+    font-size: 12px;
+    font-family: monospace;
+  }
+
+  .order-timestamp {
+    display: inline-block;
+    margin: 0 0 0 5px;
+  }
+
+  .table-number {
+    background: $accentColor;
+    border-radius: 50%;
+    color: #ffffff;
+    display: inline-block;
+    text-align: center;
+    font-weight: 700;
+    height: 32px;
+    width: 32px;
+    line-height: 32px;
+  }
+
+  .order__list--item--dishes {
+    padding-left: 44px;
+
+    .name {
+      display: inline-block;
+      margin: 0;
+
+      &:before {
+        content: '»';
+        font-size: 16px;
+        line-height: 12px;
+        margin-right: 5px;
+        color: $primaryGray;
+      }
+    }
+  }
+}

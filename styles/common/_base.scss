@@ -9,14 +9,16 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
   background-color: $backgroundColor;
-}
 
-main {
-  max-width: 935px;
-  margin: 0 auto;
-  background: white;
-  border: 1px solid $secondaryGray;
-  border-radius: $defaultBorderRadius;
+  main {
+    margin: 36px auto 0;
+    padding: 20px;
+    background: white;
+    border-bottom: 1px solid $secondaryGray;
+
+    &.backend {
+      margin-left: 200px;
+    }
+  }
 }
